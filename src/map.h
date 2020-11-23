@@ -1,11 +1,12 @@
 #pragma once
 
 #include "id.h"
-#include "map.h"
-#include "portal.h"
+//#include "portal.h"
 
 #include <map>
 #include <utility> // std::pair
+
+class Portal;
 
 struct Coordinates
 {
@@ -17,10 +18,13 @@ class Map
 {
 public:
 	int getAbsoluteDistance(const Portal& fromPortal_, const Portal& toPortal_) const;
-	int getAbsoluteDistance(const Id<Portal>& fromPortal_, const Id<Portal>& toPortal_) const;
+	int getAbsoluteDistance(const Id& fromPortal_, const Id& toPortal_) const;
+	friend bool operator< (const Map& left_, const Map& right_);
 
 private:
-	Id<Map> m_id;
-	std::map<Id<Portal>, Coordinates> m_portals;
+	Id m_id;
+	std::map<Id, Coordinates> m_portals;
 
 };
+
+bool operator< (const Map& left_, const Map& right_);

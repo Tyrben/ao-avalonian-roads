@@ -15,6 +15,7 @@ set( source_files
 	portal.h
 	portal.cpp
 	id.h
+	id.cpp
 	uniquenumbergenerator.h
 	uniquenumbergenerator.cpp)
 

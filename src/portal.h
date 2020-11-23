@@ -2,7 +2,12 @@
 
 #include "id.h"
 #include "map.h"
-#include "portal.h"
+
+enum Type
+{
+	A,
+	B
+};
 
 class Portal
 {
@@ -10,11 +15,11 @@ public:
 	
 
 private:
-	Id<Map> m_mapIdLeft;
-	Id<Map> m_mapIdRight;
+	Id m_mapIdLeft;
+	Id m_mapIdRight;
 	
 	Type m_type;
-	Timer m_timer;
+	//Timer m_timer;
 
-	Id<Portal> m_id;
+	Id m_id;
 };

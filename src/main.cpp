@@ -2,17 +2,18 @@
 #include "portal.h"
 
 #include <list>
-#include <random>
 
-int main(int argc, char argv[])
+#include <iostream>
+
+int main(int argc, char* argv[])
 {
-	//init random generation
-	std::random_device rd;
-	std::mt19937 mt(rd());
-	UniqueNumberGenerator::initRandom(mt);
+	unsigned long long a = UniqueNumberGenerator::makeNew();
+	unsigned long long b = UniqueNumberGenerator::makeNew();
 
-	std::list<Map>;
-	std::list<Portal>;
+	std::cout << a << " et " << b << '\n';
+
+	std::list<Map> maps;
+	std::list<Portal> portals;
 	
 	return 0;
 }
