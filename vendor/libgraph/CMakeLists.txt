@@ -21,3 +21,5 @@ set( test_files
 	testing_main.cpp)
 
 add_library(libgraph STATIC ${source_files})
+
+target_compile_options(libgraph PRIVATE -fpermissive)

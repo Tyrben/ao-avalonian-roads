@@ -83,7 +83,7 @@ public:
     template<class T>
     Graph& operator << (T&& rEdge) {
         // forward as r-value reference
-        makeEdge(std::move(rEdge))
+        makeEdge(std::move(rEdge));
         return *this;
     }
 
