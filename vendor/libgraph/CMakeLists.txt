@@ -8,7 +8,7 @@ project(libgraph
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set( source_files
+set(libgraph_SOURCES
 	Edge.h
 	Edge.cpp
 	Graph.h
@@ -20,6 +20,6 @@ set( source_files
 set( test_files
 	testing_main.cpp)
 
-add_library(libgraph STATIC ${source_files})
+add_library(libgraph STATIC ${libgraph_SOURCES})
 
 target_compile_options(libgraph PRIVATE -fpermissive)

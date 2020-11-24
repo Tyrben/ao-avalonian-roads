@@ -1,22 +1,24 @@
 #pragma once
 
 #include "id.h"
-#include "map.h"
 
-enum Type
-{
-	A,
-	B
-};
+
 
 class Portal
 {
 public:
-	
+	enum class Type
+	{
+		Green,
+		Blue,
+		Gold
+	};
+
+	Id getId() const;
 
 private:
-	Id m_mapIdLeft;
-	Id m_mapIdRight;
+	//Id& m_mapIdLeft;
+	//Id& m_mapIdRight;
 	
 	Type m_type;
 	//Timer m_timer;

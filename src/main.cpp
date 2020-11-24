@@ -7,13 +7,16 @@
 
 int main(int argc, char* argv[])
 {
-	unsigned long long a = UniqueNumberGenerator::makeNew();
-	unsigned long long b = UniqueNumberGenerator::makeNew();
-
-	std::cout << a << " et " << b << '\n';
-
 	std::list<Map> maps;
 	std::list<Portal> portals;
+
+	Portal portal1(type, timer);
+
+	Map map1("name");
+	map1.addPortal(portal1, { 10,10 });
+
+	Map map2("name");
+	map2.addPortal(portal1, { 20,10 });
 	
 	return 0;
 }

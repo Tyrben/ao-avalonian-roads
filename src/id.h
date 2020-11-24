@@ -7,6 +7,8 @@
 class Id
 {
 public:
+	enum class state { UNBINDED };
+	Id(state state_ = state::UNBINDED);
 	Id();
 
 	Id& operator= (const Id& id_);

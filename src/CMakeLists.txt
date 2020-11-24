@@ -1,15 +1,9 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(ao-avaloniqn-roads
-	VERSION 0.1
-	DESCRIPTION "Mapping system for AO Avalonian Roads"
-	LANGUAGES CXX)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set( source_files
-	main.cpp
+set(class_SOURCES
 	map.h
 	map.cpp
 	portal.h
@@ -21,7 +15,7 @@ set( source_files
 
 link_directories(../vendor/libgraph)
 
-add_executable(ao-avalonian-roads-gps ${source_files})
+add_executable(ao-avalonian-roads-gps main.cpp ${class_SOURCES})
 
 add_subdirectory(../vendor/libgraph ./lib)
 
