@@ -1,6 +1,6 @@
 #include "id.h"
 
-Id::Id(Id(state state_)
+Id::Id(state state_)
 {
 
 }

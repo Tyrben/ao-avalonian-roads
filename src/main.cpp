@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 	std::list<Map> maps;
 	std::list<Portal> portals;
 
-	Portal portal1(type, timer);
+	Portal portal1(Portal::Type::Blue, std::chrono::system_clock::now());
 
 	Map map1("name");
 	map1.addPortal(portal1, { 10,10 });

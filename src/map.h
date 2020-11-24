@@ -29,7 +29,6 @@ private:
 	Id m_id;
 	std::string m_name;
 	std::map<Id, Coordinates> m_portals;
-
 };
 
 bool operator< (const Map& left_, const Map& right_);

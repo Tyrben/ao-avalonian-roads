@@ -1,8 +1,7 @@
 #pragma once
 
 #include "id.h"
-
-
+#include <chrono>
 
 class Portal
 {
@@ -14,6 +13,10 @@ public:
 		Gold
 	};
 
+	/**
+	* endTime is used as a UTC time (warning)
+	*/
+	Portal(Type type_, std::chrono::time_point<std::chrono::system_clock> endTime_);
 	Id getId() const;
 
 private:
@@ -21,7 +24,6 @@ private:
 	//Id& m_mapIdRight;
 	
 	Type m_type;
-	//Timer m_timer;
-
+	std::chrono::time_point<std::chrono::system_clock> m_endTime;
 	Id m_id;
 };
