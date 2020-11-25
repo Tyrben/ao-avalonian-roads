@@ -1,9 +1,9 @@
 #include "id.h"
 
-Id::Id(state state_)
+/*Id::Id(state state_)
 {
 
-}
+}*/
 
 Id::Id()
 	: m_value{ UniqueNumberGenerator::makeNew() }

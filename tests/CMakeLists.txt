@@ -16,3 +16,6 @@ target_include_directories(ao-avalonian-roads-tests
 
 target_include_directories(ao-avalonian-roads-tests
 	PRIVATE ../src )
+
+add_test(NAME ao-avalonian-roads-tests
+	COMMAND ao-avalonian-roads-tests)
