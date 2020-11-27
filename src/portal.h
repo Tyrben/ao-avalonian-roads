@@ -6,6 +6,7 @@
 class Portal
 {
 public:
+	//TODO invent a notion of gate to use it between normal maps
 	enum class Type
 	{
 		Green,

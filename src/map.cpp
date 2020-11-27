@@ -29,3 +29,23 @@ int Map::getAbsoluteDistance(const Id& fromPortal_, const Id& toPortal_) const
 
 	return 0;
 }
+
+const Id& Map::getId() const
+{
+	return m_id;
+}
+
+const std::string& Map::getName() const
+{
+	return m_name;
+}
+
+void Map::setName(std::string newName_)
+{
+	m_name = newName_;
+}
+
+const std::map<Id, Coordinates>& Map::getPortals() const
+{
+	return m_portals;
+}

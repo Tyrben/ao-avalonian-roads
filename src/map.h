@@ -4,6 +4,7 @@
 //#include "portal.h"
 
 #include <map>
+#include <string>
 #include <utility> // std::pair
 
 class Portal;
@@ -22,6 +23,12 @@ public:
 	int getAbsoluteDistance(const Id& fromPortal_, const Id& toPortal_) const;
 	bool addPortal(const Portal& portal_, Coordinates coords_);
 	bool addPortal(const Id& portalId_, Coordinates coords_);
+
+	const Id& getId() const;
+	const std::string& getName() const;
+	const std::map<Id, Coordinates>& getPortals() const;
+
+	void setName(std::string newName_);
 
 	friend bool operator< (const Map& left_, const Map& right_);
 
