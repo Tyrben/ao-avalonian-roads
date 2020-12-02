@@ -2,8 +2,6 @@
 
 #include "uniquenumbergenerator.h"
 
-//using Id = unsigned long long;
-
 class Id
 {
 public:
@@ -11,10 +9,12 @@ public:
 	//Id(state state_ = state::UNBINDED);
 	Id();
 
-	Id& operator= (const Id& id_);
+	virtual Id& operator= (const Id& id_);
 
 	friend bool operator== (const Id& left_, const Id& right_);
 	friend bool operator< (const Id& left_, const Id& right_);
+
+	virtual std::string toString() const;
 
 private:
 	unsigned long long m_value;
@@ -22,3 +22,11 @@ private:
 
 bool operator== (const Id& left_, const Id& right_);
 bool operator< (const Id& left_, const Id& right_);
+
+class PortalId : public Id
+{
+};
+
+class MapId : public Id
+{
+};

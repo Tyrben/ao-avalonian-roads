@@ -1,5 +1,7 @@
 #include "id.h"
 
+#include <string>
+
 /*Id::Id(state state_)
 {
 
@@ -15,6 +17,11 @@ Id& Id::operator= (const Id& id_)
 {
 	m_value = id_.m_value;
 	return *this;
+}
+
+std::string Id::toString() const
+{
+	return std::to_string(m_value);
 }
 
 //friend

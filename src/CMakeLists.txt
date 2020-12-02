@@ -8,6 +8,8 @@ set(class_SOURCES
 	map.cpp
 	portal.h
 	portal.cpp
+	grid.h
+	grid.cpp
 	id.h
 	id.cpp
 	uniquenumbergenerator.h

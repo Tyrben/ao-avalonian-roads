@@ -7,7 +7,10 @@ set(tests_SOURCES
 	main.cpp
 	../src/uniquenumbergenerator.h
 	../src/uniquenumbergenerator.cpp
-	uniquenumbergenerator_test.h)
+	uniquenumbergenerator_test.h
+	../src/id.h
+	../src/id.cpp
+	id_test.h)
 
 add_executable(ao-avalonian-roads-tests ${tests_SOURCES})
 

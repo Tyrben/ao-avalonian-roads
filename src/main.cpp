@@ -12,47 +12,47 @@ int main(int argc, char* argv[])
 	std::list<Map> maps;
 	std::list<Portal> portals;
 
-
 	// map1 <-> map2 <-> map3       map6 <-> map7
 	//           ^
 	//           |
 	//           v
 	//          map4 <-> map5
 
+	Map map1("name1");
+	Map map2("name2");
+	Map map3("name3");
+	Map map4("name4");
+	Map map5("name5");
 
-	Portal portal1(Portal::Type::Blue, std::chrono::system_clock::now());
-	Portal portal2(Portal::Type::Blue, std::chrono::system_clock::now());
-	Portal portal3(Portal::Type::Blue, std::chrono::system_clock::now());
-	Portal portal4(Portal::Type::Blue, std::chrono::system_clock::now());
+	Portal portal1(Portal::Type::Blue, map1.getId(), map2.getId());
+	Portal portal2(Portal::Type::Blue, map2.getId(), map3.getId());
+	Portal portal3(Portal::Type::Blue, map2.getId(), map4.getId());
+	Portal portal4(Portal::Type::Blue, map4.getId(), map5.getId());
 
-	Map map1("name");
 	map1.addPortal(portal1, { 10, 10 });
 
-	Map map2("name");
 	map2.addPortal(portal1, { 20, 10 });
 	map2.addPortal(portal2, { 20, 10 });
 	map2.addPortal(portal3, { 20, 10 });
-
-	Map map3("name");
+	
 	map3.addPortal(portal2, { 20, 10 });
-
-	Map map4("name");
+	
 	map4.addPortal(portal3, { 20, 10 });
 	map4.addPortal(portal4, { 20, 10 });
 
-	Map map5("name");
 	map5.addPortal(portal4, { 20, 10 });
 
 	//------------
-	Portal portal5(Portal::Type::Blue, std::chrono::system_clock::now());
+	Map map6("name6");
+	Map map7("name7");
 
-	Map map6("name");
+	Portal portal5(Portal::Type::Blue, map6.getId(), map7.getId());
+
 	map6.addPortal(portal5, { 20, 10 });
 
-	Map map7("name");
 	map7.addPortal(portal5, { 20, 10 });
-
-
+	
+	//------------
 	maps.push_back(map1);
 	maps.push_back(map2);
 	maps.push_back(map3);
@@ -82,17 +82,17 @@ int main(int argc, char* argv[])
 	Node& nodeMap6 = g.makeNode<Node>(map6.getName());
 	Node& nodeMap7 = g.makeNode<Node>(map7.getName());
 
-	for (const Map& map : maps)
-	{
-		g.makeNode<Node>(map.getId());
-		for (const std::pair<Id, Coordinates>& portal : map.getPortals())
-		{
 
-		}
+	for (const auto& portal : portals)
+	{
+		auto link = portal.getLink();
+		g.makeEdge<SimpleEdge>(link.first.toString(), link.second.toString());
 	}
 
+
 	Node* from = g.findNodeById(map1.getName());
-	Node* from = g.findNodeById(map3.getName());
+	Node* to = g.findNodeById(map3.getName());
+
 	//------------------
 
 
