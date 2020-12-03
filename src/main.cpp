@@ -29,28 +29,11 @@ int main(int argc, char* argv[])
 	Portal portal3(Portal::Type::Blue, map2.getId(), map4.getId());
 	Portal portal4(Portal::Type::Blue, map4.getId(), map5.getId());
 
-	map1.addPortal(portal1, { 10, 10 });
-
-	map2.addPortal(portal1, { 20, 10 });
-	map2.addPortal(portal2, { 20, 10 });
-	map2.addPortal(portal3, { 20, 10 });
-	
-	map3.addPortal(portal2, { 20, 10 });
-	
-	map4.addPortal(portal3, { 20, 10 });
-	map4.addPortal(portal4, { 20, 10 });
-
-	map5.addPortal(portal4, { 20, 10 });
-
 	//------------
 	Map map6("name6");
 	Map map7("name7");
 
 	Portal portal5(Portal::Type::Blue, map6.getId(), map7.getId());
-
-	map6.addPortal(portal5, { 20, 10 });
-
-	map7.addPortal(portal5, { 20, 10 });
 	
 	//------------
 	maps.push_back(map1);

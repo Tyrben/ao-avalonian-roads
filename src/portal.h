@@ -9,8 +9,14 @@ struct Coordinates
 	unsigned int y;
 };
 
-struct Pin
+struct Position
 {
+	Position(Coordinates coordinates_, const MapId& mapid_)
+		: coordinates{ coordinates_ }
+		, mapId{ mapid_ }
+	{
+	}
+
 	Coordinates coordinates;
 	const MapId& mapId;
 };
@@ -30,8 +36,8 @@ public:
 	/**
 	* endTime is used as a UTC time (warning)
 	*/
-	Portal(Type type_, const MapId&, const MapId&);
-	Portal(Type type_, Pin, Pin);
+	Portal(Type, const MapId&, const MapId&); //optionnel, ca construit les Positions
+	Portal(Type, Position, Position);
 	const PortalId& getId() const;
 	std::pair<const MapId&, const MapId&> getLink() const;
 
@@ -39,8 +45,8 @@ public:
 	bool isEnded() const; // elapsed
 
 private:
-	Pin m_pinLeft;
-	Pin m_pinRight;
+	Position m_positionLeft;
+	Position m_positionRight;
 	
 	Type m_type;
 	std::chrono::time_point<std::chrono::system_clock> m_endTime;

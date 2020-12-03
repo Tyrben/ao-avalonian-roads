@@ -9,10 +9,17 @@
 
 }*/
 
-Portal::Portal(Type type_, const MapId& idLeft_, const MapId& idRight_)
+Portal::Portal(Type type_, const MapId& mapLeft_, const MapId& mapRight_)
 	: m_type(type_)
-	, m_mapIdLeft(idLeft_)
-	, m_mapIdRight(idRight_)
+	, m_positionLeft{ Position({ 0, 0 }, mapLeft_) }
+	, m_positionRight{ Position({ 0 ,0 }, mapRight_) }
+{
+}
+
+Portal::Portal(Type type_, Position positionLeft_, Position positionRight_)
+	: m_type(type_)
+	, m_positionLeft(positionLeft_)
+	, m_positionRight(positionRight_)
 {
 }
 
@@ -23,7 +30,7 @@ const PortalId& Portal::getId() const
 
 std::pair<const MapId&, const MapId&> Portal::getLink() const
 {
-	return std::make_pair(m_mapIdLeft, m_mapIdRight);
+	return std::make_pair(m_positionLeft.mapId, m_positionRight.mapId);
 }
 
 bool Portal::isEnded() const
