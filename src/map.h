@@ -1,7 +1,6 @@
 #pragma once
 
 #include "id.h"
-//#include "portal.h"
 
 #include <map>
 #include <string>

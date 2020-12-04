@@ -29,6 +29,17 @@ int main(int argc, char* argv[])
 	Portal portal3(Portal::Type::Blue, map2.getId(), map4.getId());
 	Portal portal4(Portal::Type::Blue, map4.getId(), map5.getId());
 
+	const MapId& map2id = map2.getId();
+	std::string map2idStr = IdManip::toString(map2id);
+
+	auto link = portal1.getLink();
+	//note, si je reste en reference, j'aurai un décallage par la suite... attention
+	MapId idFirst = link.first;
+	MapId idSecond = link.second;
+
+	std::string idFirstStr = IdManip::toString(idFirst);
+	std::string idSecondStr = IdManip::toString(idSecond); //error ca trouve first aussi
+
 	//------------
 	Map map6("name6");
 	Map map7("name7");
@@ -57,28 +68,44 @@ int main(int argc, char* argv[])
 	Graph g;
 	  // You can subclass Node, in order to add functionallity to the nodes.
 
-	Node& nodeMap1 = g.makeNode<Node>(map1.getName());
-	Node& nodeMap2 = g.makeNode<Node>(map2.getName());
-	Node& nodeMap3 = g.makeNode<Node>(map3.getName());
-	Node& nodeMap4 = g.makeNode<Node>(map4.getName());
-	Node& nodeMap5 = g.makeNode<Node>(map5.getName());
-	Node& nodeMap6 = g.makeNode<Node>(map6.getName());
-	Node& nodeMap7 = g.makeNode<Node>(map7.getName());
+	Node& nodeMap1 = g.makeNode<Node>(IdManip::toString(map1.getId()));
+	Node& nodeMap2 = g.makeNode<Node>(IdManip::toString(map2.getId()));
+	Node& nodeMap3 = g.makeNode<Node>(IdManip::toString(map3.getId()));
+	Node& nodeMap4 = g.makeNode<Node>(IdManip::toString(map4.getId()));
+	Node& nodeMap5 = g.makeNode<Node>(IdManip::toString(map5.getId()));
+	Node& nodeMap6 = g.makeNode<Node>(IdManip::toString(map6.getId()));
+	Node& nodeMap7 = g.makeNode<Node>(IdManip::toString(map7.getId()));
 
 
 	for (const auto& portal : portals)
 	{
 		auto link = portal.getLink();
-		g.makeEdge<SimpleEdge>(link.first.toString(), link.second.toString());
+		std::string tmp1 = IdManip::toString(link.first);
+		std::string tmp2 = IdManip::toString(link.second);
+		Node* left = g.findNodeById(IdManip::toString(link.first));
+		Node* right = g.findNodeById(IdManip::toString(link.second));
+		g.makeBiEdge<SimpleEdge>(*left, *right, 100);
 	}
 
 
-	Node* from = g.findNodeById(map1.getName());
-	Node* to = g.findNodeById(map3.getName());
+	Node* from = g.findNodeById(IdManip::toString(map1.getId()));
+	Node* to = g.findNodeById(IdManip::toString(map3.getId()));
+
+	// find the shortest path between any type of nodes, regarding the weight of your edges
+	auto path = g.findShortestPathDijkstra(*from, *to);
+	for (Edge* pEdge : path)
+	{
+		// dynamic_cast to your Edge type is useful, if you have multiple different types of edges.
+		SimpleEdge* pMyEdge = dynamic_cast<SimpleEdge*>(pEdge);
+		if (pMyEdge)
+		{
+			std::cout << pEdge->toString() << std::endl;
+		}
+	}
 
 	//------------------
 
-
+	/*
 	Node& rMunich = g.makeNode<Node>("Munich");
 	Node& rHamburg = g.makeNode<Node>("Hamburg");
 	Node& rBerlin = g.makeNode<Node>("Berlin");
@@ -101,7 +128,7 @@ int main(int argc, char* argv[])
 		{
 			std::cout << pEdge->toString() << std::endl;
 		}
-	}
+	}*/
 
 
 

@@ -2,6 +2,15 @@
 
 #include "uniquenumbergenerator.h"
 
+using MapId = unsigned long long;
+using PortalId = unsigned long long;
+
+struct IdManip
+{
+	static std::string toString(unsigned long long);
+};
+
+/*
 class Id
 {
 public:
@@ -30,3 +39,4 @@ class PortalId : public Id
 class MapId : public Id
 {
 };
+*/

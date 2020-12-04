@@ -2,7 +2,8 @@
 #include "portal.h"
 
 Map::Map(std::string name_)
-	: m_name ( name_ )
+	: m_id{ UniqueNumberGenerator::makeNew() }
+	, m_name ( name_ )
 {
 }
 

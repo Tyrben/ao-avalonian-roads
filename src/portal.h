@@ -39,7 +39,7 @@ public:
 	Portal(Type, const MapId&, const MapId&); //optionnel, ca construit les Positions
 	Portal(Type, Position, Position);
 	const PortalId& getId() const;
-	std::pair<const MapId&, const MapId&> getLink() const;
+	std::pair<const MapId, const MapId> getLink() const; //TODO retake, reinterogate about needs
 
 	void setEndTime(std::chrono::time_point<std::chrono::system_clock> endTime_);
 	bool isEnded() const; // elapsed

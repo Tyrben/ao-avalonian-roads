@@ -1,4 +1,5 @@
-
+#include "grid.h"
+/*
 bool Grid::addPortal(const Portal& portal_, Coordinates coords_)
 {
 	m_portals[portal_.getId()] = coords_;
@@ -27,3 +28,4 @@ const std::map<PortalId, Coordinates>& Map::getPortals() const
 {
 	return m_portals;
 }
+*/

@@ -3,7 +3,7 @@
 class Grid
 {
 public:
-	int deleteExpiredPortals();
+/*	int deleteExpiredPortals();
 	bool addPortal(const Portal& portal_, Coordinates coords_);
 	bool addPortal(const PortalId& portalId_, Coordinates coords_);
 	int getAbsoluteDistance(const Portal& fromPortal_, const Portal& toPortal_) const;
@@ -13,7 +13,7 @@ public:
 	int getAlignedDistance() const;
 
 	Map& getMapById(const MapId&) const;
-	Map& getMapByName(std::string) const;
+	Map& getMapByName(std::string) const;*/
 
 private:
 };
