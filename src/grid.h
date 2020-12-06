@@ -1,6 +1,6 @@
 #pragma once
 
-class Grid
+class World
 {
 public:
 /*	int deleteExpiredPortals();

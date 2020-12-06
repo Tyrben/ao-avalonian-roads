@@ -1,4 +1,4 @@
-#include "grid.h"
+#include "world.h"
 /*
 bool Grid::addPortal(const Portal& portal_, Coordinates coords_)
 {

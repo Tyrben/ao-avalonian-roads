@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
 
 
 	Node* from = g.findNodeById(IdManip::toString(map1.getId()));
-	Node* to = g.findNodeById(IdManip::toString(map3.getId()));
+	Node* to = g.findNodeById(IdManip::toString(map7.getId()));
 
 	// find the shortest path between any type of nodes, regarding the weight of your edges
 	auto path = g.findShortestPathDijkstra(*from, *to);

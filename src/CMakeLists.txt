@@ -21,6 +21,9 @@ add_executable(ao-avalonian-roads-gps main.cpp ${class_SOURCES})
 
 add_subdirectory(../vendor/libgraph ./lib)
 
+target_compile_options(ao-avalonian-roads-gps PRIVATE -fpermissive)
+#TODO check if needed here or if we can herite from libgraph using PUBLIC or INTERFACE
+
 target_include_directories(ao-avalonian-roads-gps
 	PRIVATE ../vendor/libgraph )
 
