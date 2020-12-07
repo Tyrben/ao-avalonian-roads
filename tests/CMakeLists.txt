@@ -10,9 +10,15 @@ set(tests_SOURCES
 	uniquenumbergenerator_test.h
 	../src/id.h
 	../src/id.cpp
-	id_test.h)
+	id_test.h
+	../src/navigationsystem.h
+	../src/navigationsystem.cpp
+	navigationsystem_test.h)
 
 add_executable(ao-avalonian-roads-tests ${tests_SOURCES})
+
+target_include_directories(ao-avalonian-roads-tests
+	PRIVATE ../vendor/libgraph )
 
 target_include_directories(ao-avalonian-roads-tests
 	PRIVATE ../vendor/catch )
