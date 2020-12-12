@@ -62,7 +62,7 @@ void NavigationSystem::init()
 	}
 }
 
-void NavigationSystem::dontKnowYet()
+void NavigationSystem::printRoute() const
 {
 	Node* from = g.findNodeById(IdManip::toString(map1.getId()));
 	Node* to = g.findNodeById(IdManip::toString(map7.getId()));
@@ -80,6 +80,12 @@ void NavigationSystem::dontKnowYet()
 	}
 
 	//------------------
+}
+
+
+void NavigationSystem::accept(WorldInfo &element)
+{
+	element.visitElement(this);
 }
 
 /*

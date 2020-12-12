@@ -11,9 +11,12 @@ set(class_SOURCES
 	navigationsystem.h
 	navigationsystem.cpp
 	portal.h
-	portal.cpp	
+	portal.cpp
 	uniquenumbergenerator.h
-	uniquenumbergenerator.cpp)
+	uniquenumbergenerator.cpp
+	visitor.h
+	world.h
+	world.cpp)
 
 link_directories(../vendor/libgraph)
 
