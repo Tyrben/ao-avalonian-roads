@@ -5,67 +5,35 @@
 #include <Graph.h>
 #include <SimpleEdge.h>
 
-
 #include <iostream> //debug
 
-
-/*
-bool NavigationSystem::addPortal(const Portal& portal_, Coordinates coords_)
+void NavigationSystem::init_(Graph* g_) const
 {
-	m_portals[portal_.getId()] = coords_;
-	return true;
-}
-
-bool NavigationSystem::addPortal(const PortalId& portalId_, Coordinates coords_)
-{
-	m_portals[portalId_] = coords_;
-	return true;
-}
-
-int NavigationSystem::getAbsoluteDistance(const Portal& fromPortal_, const Portal& toPortal_) const
-{
-	return 0;
-}
-
-int NavigationSystem::getAbsoluteDistance(const PortalId& fromPortal_, const PortalId& toPortal_) const
-{
-	m_portals.find(fromPortal_);
-
-	return 0;
-}
-
-const std::map<PortalId, Coordinates>& NavigationSystem::getPortals() const
-{
-	return m_portals;
-}
-*/
-
-
-void NavigationSystem::init()
-{
-	Graph g;
 	// You can subclass Node, in order to add functionallity to the nodes.
 
-	for (const auto& map : maps)
+	for (const auto& map : m_maps)
 	{
-		Node& currentNode = g.makeNode<Node>(IdManip::toString(map.getId()));
+		Node& currentNode = g_->makeNode<Node>(IdManip::toString(map.getId()));
 	}
 
-	for (const auto& portal : portals)
+	for (const auto& portal : m_portals)
 	{
 		auto link = portal.getLink();
 		std::string tmp1 = IdManip::toString(link.first);
 		std::string tmp2 = IdManip::toString(link.second);
-		Node* left = g.findNodeById(IdManip::toString(link.first));
-		Node* right = g.findNodeById(IdManip::toString(link.second));
-		g.makeBiEdge<SimpleEdge>(*left, *right, 100);
+		Node* left = g_->findNodeById(IdManip::toString(link.first));
+		Node* right = g_->findNodeById(IdManip::toString(link.second));
+		g_->makeBiEdge<SimpleEdge>(*left, *right, 100);
 	}
 }
 
 void NavigationSystem::printRoute() const
 {
-	Node* from = g.findNodeById(IdManip::toString(map1.getId()));
-	Node* to = g.findNodeById(IdManip::toString(map7.getId()));
+	Graph g;
+	init_(&g);
+
+	Node* from = g.findNodeById(IdManip::toString(m_maps[1].getId()));
+	Node* to = g.findNodeById(IdManip::toString(m_maps[7].getId()));
 
 	// find the shortest path between any type of nodes, regarding the weight of your edges
 	auto path = g.findShortestPathDijkstra(*from, *to);
@@ -78,14 +46,11 @@ void NavigationSystem::printRoute() const
 			std::cout << pEdge->toString() << std::endl;
 		}
 	}
-
-	//------------------
 }
 
-
-void NavigationSystem::accept(WorldInfo &element)
+void NavigationSystem::visitElement(World* w_)
 {
-	element.visitElement(this);
+
 }
 
 /*

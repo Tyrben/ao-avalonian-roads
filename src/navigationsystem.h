@@ -1,24 +1,16 @@
 #pragma once
-//rename directions?
 
+#include "visitor.h"
+#include "world.h"
 #include "map.h"
 #include "portal.h"
-#include "visitor.h"
 
-#include <list>
+#include <vector>
 
+class Graph;
+//auto shortestRoute = makeShortestRoute(World);
 
-
-
-//friend or public accessors ?
-
-
-
-auto shortestRoute = makeShortestRoute(WorldInfo);
-
-
-
-class NavigationSystem : public Visitor<NavigationSystem>
+class NavigationSystem : public Visitor<World>
 {
 public:
 /*	
@@ -31,22 +23,21 @@ public:
 	Map& getMapById(const MapId&) const;
 	Map& getMapByName(std::string) const;*/
 
-	std::list<MapId> getShortestRoute(const WorldInfo&, from, to);
+	std::list<MapId> getShortestRoute(const World&, MapId, MapId);
 	//std::list<MapId> getShortestRouteAt(from, to, date);
-
-	responseFormat directions(origin, destination);
+	//responseFormat directions(MapId, MapId);
 
 	void printRoute() const;
 
 
-	void init();
 
-	/*virtual*/ void visitElement(NavigationSystem*);
+
+	/*virtual*/ void visitElement(World*);
 
 private:
-
+	void init_(Graph* g_) const;
 	//Graph m_graph;
 
-	std::list<Map> m_maps;
-	std::list<Portal> m_portals;
+	std::vector<Map> m_maps;
+	std::vector<Portal> m_portals;
 };

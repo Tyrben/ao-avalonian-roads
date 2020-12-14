@@ -1,33 +1,36 @@
 #pragma once
 
-class WorldInfo
+#include "visitor.h"
+
+#include "map.h"
+#include "portal.h"
+
+#include <list>
+
+class World
 {
 public:
 	int deleteExpiredPortals();
-	WorldInfo getFuture(date);
+	World getFuture(std::chrono::time_point<std::chrono::system_clock> date_);
 
-	WorldInfo request(NO_EXPIRED_PORTALS);
-	WorldInfo request(SET_DATE, date);
+	//World request(NO_EXPIRED_PORTALS);
+	//World request(SET_DATE, date);
 
-	Graph request(NO_EXPIRED_PORTALS);
-	Graph request(SET_DATE, date);
-	graph.diskstra();
+	//World request(NO_EXPIRED_PORTALS);
+	//World request(SET_DATE, date);
 
 	bool addPortal(const Portal& portal_, Coordinates coords_);
 	bool addPortal(const PortalId& portalId_, Coordinates coords_);
 
-	bool execRequest(Functor);
+	//bool execRequest(Functor);
 
-	infos.execRequest(shortestRoute(response));
-
-	accept(NavigationSystem); // Visitor pattern
+	void accept(Visitor<World>&); ///< Visitor pattern
 
 private:
 	/**
 	*
 	*/
-	bool hydrate(); // hydrate ca lit un fichier ou une base, si t'as déjà les data... c'est plutot des addPortal, addMap car la lecture se fait à l'extérieur
-
+	
 	std::list<Portal> m_portals;
 	std::list<Map> m_maps;
 };
