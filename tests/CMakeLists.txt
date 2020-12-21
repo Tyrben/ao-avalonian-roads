@@ -15,7 +15,12 @@ set(tests_SOURCES
 	../src/navigationsystem.cpp
 	navigationsystem_test.h)
 
+link_directories(../vendor/libgraph)
+
 add_executable(ao-avalonian-roads-tests ${tests_SOURCES})
+
+target_link_libraries(ao-avalonian-roads-tests
+	LINK_PUBLIC libgraph)
 
 target_include_directories(ao-avalonian-roads-tests
 	PRIVATE ../vendor/libgraph )

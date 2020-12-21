@@ -1,3 +1,4 @@
+#pragma once
 #include <id.h>
 
 TEST_CASE("PortalId can be copied", "[Id]") {

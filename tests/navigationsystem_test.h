@@ -1,3 +1,7 @@
+#pragma once
+
+#include <map.h>
+#include <portal.h>
 
 void noname() {
 
@@ -34,20 +38,4 @@ void noname() {
 	Map map7("name7");
 
 	Portal portal5(Portal::Type::Blue, map6.getId(), map7.getId());
-
-	//------------
-	maps.push_back(map1);
-	maps.push_back(map2);
-	maps.push_back(map3);
-	maps.push_back(map4);
-	maps.push_back(map5);
-	maps.push_back(map6);
-	maps.push_back(map7);
-
-	portals.push_back(portal1);
-	portals.push_back(portal2);
-	portals.push_back(portal3);
-	portals.push_back(portal4);
-	portals.push_back(portal5);
-
 }
