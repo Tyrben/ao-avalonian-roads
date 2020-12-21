@@ -4,5 +4,5 @@ template<class T>
 class Visitor
 {
 public:
-	virtual void visitElement(T* e) = 0;//TODO check with a reference
+	virtual void visit(T* e) = 0;//TODO check with a reference
 };

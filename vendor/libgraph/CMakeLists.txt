@@ -24,6 +24,8 @@ add_library(libgraph STATIC ${libgraph_SOURCES})
 
 target_include_directories(libgraph INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_compile_options(libgraph PUBLIC -fpermissive)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	target_compile_options(libgraph PUBLIC -fpermissive)
+endif()
 
 add_executable(libgraph-tests EXCLUDE_FROM_ALL ${test_files} ${libgraph_SOURCES})

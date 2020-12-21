@@ -11,29 +11,27 @@ void NavigationSystem::init_(Graph* g_) const
 {
 	// You can subclass Node, in order to add functionallity to the nodes.
 
-	for (const auto& map : m_maps)
+	for (const auto& map : m_world->getMaps())
 	{
 		Node& currentNode = g_->makeNode<Node>(IdManip::toString(map.getId()));
 	}
 
-	for (const auto& portal : m_portals)
+	for (const auto& portal : m_world->getPortals())
 	{
 		auto link = portal.getLink();
-		std::string tmp1 = IdManip::toString(link.first);
-		std::string tmp2 = IdManip::toString(link.second);
 		Node* left = g_->findNodeById(IdManip::toString(link.first));
 		Node* right = g_->findNodeById(IdManip::toString(link.second));
 		g_->makeBiEdge<SimpleEdge>(*left, *right, 100);
 	}
 }
 
-void NavigationSystem::printRoute() const
+void NavigationSystem::printRoute(MapId from_, MapId to_) const
 {
 	Graph g;
-	init_(&g);
+	init_(&g); //the World should continue evolve between two prints
 
-	Node* from = g.findNodeById(IdManip::toString(m_maps[1].getId()));
-	Node* to = g.findNodeById(IdManip::toString(m_maps[7].getId()));
+	const Node* from = g.findNodeById(IdManip::toString(from_));
+	const Node* to = g.findNodeById(IdManip::toString(to_));
 
 	// find the shortest path between any type of nodes, regarding the weight of your edges
 	auto path = g.findShortestPathDijkstra(*from, *to);
@@ -48,9 +46,9 @@ void NavigationSystem::printRoute() const
 	}
 }
 
-void NavigationSystem::visitElement(World* w_)
+void NavigationSystem::visit(World* w_)
 {
-
+	m_world = w_;
 }
 
 /*

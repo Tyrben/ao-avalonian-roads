@@ -13,7 +13,7 @@ Portal::Portal(Type type_, const MapId& mapLeft_, const MapId& mapRight_)
 	: m_id{ UniqueNumberGenerator::makeNew() }
 	, m_type(type_)
 	, m_positionLeft{ Position({ 0, 0 }, mapLeft_) }
-	, m_positionRight{ Position({ 0 ,0 }, mapRight_) }
+	, m_positionRight{ Position({ 0, 0 }, mapRight_) }
 {
 }
 

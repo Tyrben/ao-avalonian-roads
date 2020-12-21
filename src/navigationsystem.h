@@ -5,6 +5,7 @@
 #include "map.h"
 #include "portal.h"
 
+#include <list>
 #include <vector>
 
 class Graph;
@@ -23,21 +24,20 @@ public:
 	Map& getMapById(const MapId&) const;
 	Map& getMapByName(std::string) const;*/
 
-	std::list<MapId> getShortestRoute(const World&, MapId, MapId);
+	std::list<MapId> getShortestRoute(MapId, MapId) const;
 	//std::list<MapId> getShortestRouteAt(from, to, date);
 	//responseFormat directions(MapId, MapId);
 
-	void printRoute() const;
+	void printRoute(MapId, MapId) const;
 
 
 
 
-	/*virtual*/ void visitElement(World*);
+	/*virtual*/ void visit(World*);
 
 private:
 	void init_(Graph* g_) const;
 	//Graph m_graph;
 
-	std::vector<Map> m_maps;
-	std::vector<Portal> m_portals;
+	World* m_world;
 };

@@ -39,3 +39,27 @@ void noname() {
 
 	Portal portal5(Portal::Type::Blue, map6.getId(), map7.getId());
 }
+
+
+void NavigationSystem::printRoute(MapId from_, MapId to_) const
+{
+	Graph g;
+	init_(&g); //the World should continue evolve between two prints
+
+	const auto maps = m_world->getMaps();
+
+	Node* from = g.findNodeById(IdManip::toString(maps[1].getId()));
+	Node* to = g.findNodeById(IdManip::toString(maps[7].getId()));
+
+	// find the shortest path between any type of nodes, regarding the weight of your edges
+	auto path = g.findShortestPathDijkstra(*from, *to);
+	for (Edge* pEdge : path)
+	{
+		// dynamic_cast to your Edge type is useful, if you have multiple different types of edges.
+		SimpleEdge* pMyEdge = dynamic_cast<SimpleEdge*>(pEdge);
+		if (pMyEdge)
+		{
+			std::cout << pEdge->toString() << std::endl;
+		}
+	}
+}

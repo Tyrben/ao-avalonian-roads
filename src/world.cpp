@@ -3,7 +3,29 @@
 //for Visitor pattern
 void World::accept(Visitor<World>& visitor_)
 {
-	visitor_.visitElement(this);
+	visitor_.visit(this);
+}
+
+const std::vector<Portal>& World::getPortals() const
+{
+	return m_portals;
+}
+
+const std::vector<Map>& World::getMaps() const
+{
+	return m_maps;
+}
+
+bool World::addPortal(Portal portal_)
+{
+	m_portals.push_back(portal_);
+	return true;
+}
+
+bool World::addMap(Map map_)
+{
+	m_maps.push_back(map_);
+	return true;
 }
 
 /*
