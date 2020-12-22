@@ -23,9 +23,9 @@ set(class_SOURCES
 
 add_library(ao-avalonian-roads-lib STATIC ${class_SOURCES})
 
-#if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-#target_compile_options(ao-avalonian-roads-gps PRIVATE -fpermissive)
-#endif()
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	target_compile_options(ao-avalonian-roads-lib PRIVATE -fpermissive)
+endif()
 #TODO check if needed here or if we can herite from libgraph using PUBLIC or INTERFACE
 
 target_include_directories(ao-avalonian-roads-lib

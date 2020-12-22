@@ -108,7 +108,7 @@ public:
     * Retrieves a node by the given id. 
     * @return a pointer to the node or NULL if not found. 
     */
-    Node* Graph::findNodeById(const std::string& id);
+    Node* findNodeById(const std::string& id);
 
     /** Retrieves all edges that have rSrc as source node and rDst as destination node. */
     tEdges findEdges(const Node& rSrc, const Node& rDst);
