@@ -7,6 +7,7 @@ project(ao-avalonian-roads
 
 add_subdirectory(src)
 add_subdirectory(tests)
+add_subdirectory(app)
 
 # Thirdparty vendor libraries
 add_subdirectory(vendor/libgraph ./libgraph)

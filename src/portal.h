@@ -38,7 +38,7 @@ public:
 	*/
 	Portal(Type, const MapId&, const MapId&); //optionnel, ca construit les Positions
 	Portal(Type, Position, Position); // TODO change parameters order?
-	const PortalId& getId() const;
+	const PortalId& getId() const; // TODO plutot par copie que par reference, c'est un int
 	std::pair<const MapId, const MapId> getLink() const; //TODO retake, reinterogate about needs
 
 	void setEndTime(std::chrono::time_point<std::chrono::system_clock> endTime_);

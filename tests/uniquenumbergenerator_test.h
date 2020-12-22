@@ -1,3 +1,4 @@
+#pragma once
 #include <uniquenumbergenerator.h>
 
 TEST_CASE( "Unique number returns different value each time", "[UniqueNumberGenerator]" ) {
