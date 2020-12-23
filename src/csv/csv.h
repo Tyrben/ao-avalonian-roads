@@ -6,18 +6,23 @@
 #include <vector>
 
 using Cell = std::variant<int, double, std::string>;
-using Line = std::vector<Cell>;
+using Record = std::vector<Cell>;
 //using Column = std::pair<std::string, std::vector<int>>;
-using DataSet = std::vector<Line>;
+using DataSet = std::vector<Record>;
 
 class CsvFormat
 {
 public:
 	void setSeparator(char separator_);
-	void loadFrom(std::string filename_);
-	void writeTo(std::string filename_) const;
+	void loadFromFile(std::string filename_);
+	void writeToFile(std::string filename_) const;
+
+	void fromString(std::string filename_);
+	std::string toString() const;
 
 private:
+	bool m_hasHeaders:
+	std::vector<std::string> m_headers;
 	DataSet m_dataset;
 	char m_separator = ',';
 };

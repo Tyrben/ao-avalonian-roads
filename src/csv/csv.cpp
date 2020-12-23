@@ -1,11 +1,28 @@
 #include "csv.h"
 
 //TODO https://codereview.stackexchange.com/questions/211826/code-to-read-and-write-csv-files
+//Look at https://www.fluentcpp.com/2017/04/21/how-to-split-a-string-in-c/
 #include <fstream>
 
 void CsvFormat::setSeparator(char separator_)
 {
 	m_separator = separator_;
+}
+
+Record CsvFormat::parseLine(std::string line_)
+{
+	std::stringstream
+
+	for (const auto& cell : record) {
+        std::visit([](const auto& content) { std::cout << content << ' '; }, cell);
+    }
+}
+
+std::string CsvFormat::writeLine(const Record& record_)
+{
+	for (const auto& cell : record_) {
+        std::visit([](const auto& content) { std::cout << content << ' '; }, cell);
+    }
 }
 
 void CsvFormat::loadFrom(std::string filename_)
@@ -37,7 +54,7 @@ void CsvFormat::loadFrom(std::string filename_)
 		{
 
 			// Initialize and add <colname, int vector> pairs to result
-			m_dataset.push_back({ colname, std::vector<int> {} });
+			m_dataset.emplace_back({ colname, std::vector<int> {} });
 		}
 	}
 
@@ -54,7 +71,7 @@ void CsvFormat::loadFrom(std::string filename_)
 		while (ss >> val)
 		{
 			// Add the current integer to the 'colIdx' column's values vector
-			m_dataset.at(colIdx).second.push_back(val);
+			m_dataset.at(colIdx).second.emplace_back(val);
 
 			// If the next token is a comma, ignore it and move on
 			if (ss.peek() == m_separator) ss.ignore();
@@ -63,9 +80,6 @@ void CsvFormat::loadFrom(std::string filename_)
 			colIdx++;
 		}
 	}
-
-	// Close file
-	myFile.close();
 }
 
 void CsvFormat::writeTo(std::string filename_) const
@@ -79,7 +93,14 @@ void CsvFormat::writeTo(std::string filename_) const
 	// Create an output filestream object
 	std::ofstream myFile(filename_);
 
+	// Make sure the file is open
+	if (!myFile.is_open()) throw std::runtime_error("Could not open file");
+
 	// Send column names to the stream
+	for (const Line& line: m_dataset)
+	{
+	}
+
 	for (int j = 0; j < m_dataset.size(); ++j)
 	{
 		myFile << m_dataset.at(j).first;
