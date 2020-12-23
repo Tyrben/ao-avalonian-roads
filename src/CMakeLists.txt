@@ -4,7 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(class_SOURCES
-	element.h
+	csv/csv.h
+	csv/csv.cpp
 	id.h
 	id.cpp
 	map.h
@@ -15,18 +16,14 @@ set(class_SOURCES
 	portal.cpp
 	uniquenumbergenerator.h
 	uniquenumbergenerator.cpp
-	visitor.h
+	visitor/element.h
+	visitor/visitor.h
 	world.h
 	world.cpp)
 
 #link_directories(../vendor/libgraph)
 
 add_library(ao-avalonian-roads-lib STATIC ${class_SOURCES})
-
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	target_compile_options(ao-avalonian-roads-lib PRIVATE -fpermissive)
-endif()
-#TODO check if needed here or if we can herite from libgraph using PUBLIC or INTERFACE
 
 target_include_directories(ao-avalonian-roads-lib
 	PRIVATE ../vendor/libgraph )

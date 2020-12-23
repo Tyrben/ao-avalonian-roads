@@ -1,6 +1,6 @@
 #pragma once
 
-#include "visitor.h"
+#include "visitor/visitor.h"
 #include "world.h"
 #include "map.h"
 #include "portal.h"

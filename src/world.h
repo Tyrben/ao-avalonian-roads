@@ -1,9 +1,9 @@
 #pragma once
 
-#include "element.h"
 #include "map.h"
 #include "portal.h"
-#include "visitor.h"
+#include "visitor/element.h"
+#include "visitor/visitor.h"
 
 #include <vector>
 
