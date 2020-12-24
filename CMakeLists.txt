@@ -5,6 +5,9 @@ project(ao-avalonian-roads
 	DESCRIPTION "Mapping system for AO Avalonian Roads"
 	LANGUAGES CXX)
 
+# Enable testing for the project
+enable_testing()
+
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(app)
