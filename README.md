@@ -1,4 +1,7 @@
 # ao-avalonian-roads
+
+[![CMake](https://github.com/Tyrben/ao-avalonian-roads/workflows/CMake/badge.svg)](https://github.com/Tyrben/ao-avalonian-roads/actions)
+
 Multiple tools to import info about Albion Online avalonian roads and portals, search for shortest paths, merge data...
 
 This project is ment to work with any source of data as long as we can load it. Currently a system of Google Forms and Google Sheets are used to fill in informations regarding Avalonian portals and Avalonion roads. The interface is a Google webservice. But it can be easily extended to other source of information, online or offline.
@@ -43,6 +46,8 @@ Up to you to speak of this project around you, to fix our documentations, or to 
 The Github issue system allows you to participate. You can write end-user feedbacks, bug reports, expectations...
 
 Or write in-code reviews, remarks, retake proposals...
+
+[learn more...](docs/CONTRIBUTING.md)
 
 ## Evolution
 It is planed to be extended with a GUI. Maybe to make the bridge to [Portaler](https://github.com/Portaler-Zone/portaler-core), another ao mature project.
