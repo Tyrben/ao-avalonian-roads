@@ -15,10 +15,10 @@ add_executable(ao-avalonian-roads-gps main.cpp)
 #target_include_directories(ao-avalonian-roads-gps
 #	PUBLIC ../vendor/libgraph )
 
-#target_include_directories(ao-avalonian-roads-gps
-#	PRIVATE ../vendor/Lyra-master/include )
+# target_include_directories(ao-avalonian-roads-gps
+# 	PUBLIC ../vendor/Lyra-master/include )
 
 target_link_libraries(ao-avalonian-roads-gps
 	LINK_PUBLIC ao-avalonian-roads-lib
-	LINK_PUBLIC libgraph)
-#	PRIVATE bfg::lyra)
+	LINK_PUBLIC libgraph
+	LINK_PUBLIC bfg::Lyra)

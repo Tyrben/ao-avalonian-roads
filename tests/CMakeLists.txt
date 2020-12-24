@@ -4,9 +4,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(tests_SOURCES
-	uniquenumbergenerator_test.h
+	csvformat_test.h
 	id_test.h
-	navigationsystem_test.h)
+	navigationsystem_test.h
+	uniquenumbergenerator_test.h)
 
 link_directories(../vendor/libgraph)
 

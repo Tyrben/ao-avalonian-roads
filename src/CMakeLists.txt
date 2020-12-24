@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(class_SOURCES
-	csv/csv.h
-	csv/csv.cpp
+	csv/csvformat.h
+	csv/csvformat.cpp
 	id.h
 	id.cpp
 	map.h
