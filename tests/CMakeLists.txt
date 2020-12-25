@@ -7,7 +7,9 @@ set(tests_SOURCES
 	csvformat_test.h
 	id_test.h
 	navigationsystem_test.h
-	uniquenumbergenerator_test.h)
+	uniquenumbergenerator_test.h
+	visitor_test.h
+	world_test.h)
 
 link_directories(../vendor/libgraph)
 

@@ -3,3 +3,7 @@
 
 # Declare files that will always have CRLF (windows) line endings on checkout.
 *.bat text eol=crlf
+
+# Force sources to have CRLF (windows) line endings.
+*.h text eol=crlf
+*.cpp text eol=crlf
