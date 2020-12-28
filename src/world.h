@@ -25,6 +25,7 @@ public:
 	//bool addPortal(PortalId& portalId_, Coordinates coords_);
 
 	//bool execRequest(Functor);
+    const Map& getMapByName(const std::string& name_) const;
 
 	/*virtual*/ void accept(Visitor<World>&); ///< Visitor pattern
 
