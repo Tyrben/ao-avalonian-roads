@@ -13,15 +13,18 @@ void NavigationSystem::init_(Graph* g_) const
 
 	for (const auto& map : m_world->getMaps())
 	{
-		Node& currentNode = g_->makeNode<Node>(IdManip::toString(map.getId()));
+		/*Node& currentNode = */g_->makeNode<Node>(IdManip::toString(map.getId()));
 	}
 
+	//arrivé ici, le m_portals n'est plus bon dans m_world...
 	for (const auto& portal : m_world->getPortals())
 	{
+		//TODO le portal a le bon ID, mais n'a pas les bons ID de maps
 		auto link = portal.getLink();
 		Node* left = g_->findNodeById(IdManip::toString(link.first));
 		Node* right = g_->findNodeById(IdManip::toString(link.second));
-		g_->makeBiEdge<SimpleEdge>(*left, *right, 100);
+		if (left && right)
+			g_->makeBiEdge<SimpleEdge>(*left, *right, 100);
 	}
 }
 

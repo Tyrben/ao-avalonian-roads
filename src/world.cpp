@@ -18,14 +18,23 @@ const std::vector<Map>& World::getMaps() const
 
 bool World::addPortal(Portal portal_)
 {
-	m_portals.push_back(portal_);
+	m_portals.emplace_back(portal_); //TODO use a reference?
 	return true;
 }
 
 bool World::addMap(Map map_)
 {
-	m_maps.push_back(map_);
+	m_maps.emplace_back(map_); //TODO use a reference?
 	return true;
+}
+
+const Map& World::getMapByName(const std::string& name_) const
+{
+	for (const Map& map : m_maps)
+	{
+		if (map.getName() == name_)
+			return map;
+	}
 }
 
 /*

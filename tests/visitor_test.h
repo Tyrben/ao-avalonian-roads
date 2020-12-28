@@ -11,6 +11,7 @@ struct TestVisitedElement : public Element<TestVisitedElement>
         visitor_.visit(this);
     }
 
+	// Something (not part of the pattern) to test we have visited the Element
     bool getState() const
     {
         return wasVisited;
@@ -34,7 +35,6 @@ TEST_CASE( "Visitor can visit an element", "[Visitor]" ) {
     TestVisitedElement visited;
     TestVisitor visitor;
     visited.accept(visitor);
-//    visitor.visit(visited);
-
+	
     REQUIRE(visited.getState());
 }

@@ -21,14 +21,15 @@ This projet is composed of a series of elements: static librairies, apps, tests.
 
     ao-avalonian-roads-gps command [--parameter=value ...]
 
-    --input-map-csv=my_file.csv --input-portal-csv=my_file.csv --input-portal-csv=my_file.csv
-
 ### Command list
 
-* `find`
 * `route`
+  * `origin`: exact name of the map of origin
+  * `destination`: exact name of the map of origin
 
 ### Example
+
+    ao-avalonian-roads-gps route --origin="Bridgewatch" --destination="Casos-Aiagsum"
 
 ## Contributing
 
