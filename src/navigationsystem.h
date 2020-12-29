@@ -24,11 +24,11 @@ public:
 	Map& getMapById(const MapId&) const;
 	Map& getMapByName(std::string) const;*/
 
-	std::list<MapId> getShortestRoute(MapId, MapId) const;
+	std::list<MapName> getShortestRoute(MapName, MapName) const;
 	//std::list<MapId> getShortestRouteAt(from, to, date);
 	//responseFormat directions(MapId, MapId);
 
-	void printRoute(MapId, MapId) const;
+	void printRoute(MapName, MapName) const;
 
 
 

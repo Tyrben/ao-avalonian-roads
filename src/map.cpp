@@ -1,28 +1,26 @@
 #include "map.h"
 
-Map::Map(std::string name_)
-	: m_id{ UniqueNumberGenerator::makeNew() }
-	, m_name( name_ )
+Map::Map(const MapName& name_)
+	: m_name( name_ )
 {
 }
 
-Map::Map(std::string name_, MapId forcedId_)
-	: m_id{ forcedId_ }
-	, m_name( name_ )
+Map::Map(MapName&&  name_)
+	: m_name{ std::move(name_) }
 {
 }
 
-const MapId& Map::getId() const
-{
-	return m_id;
-}
-
-const std::string& Map::getName() const
+const MapName& Map::getName() const
 {
 	return m_name;
 }
 
-void Map::setName(std::string newName_)
+void Map::setName(const MapName& newName_)
 {
 	m_name = newName_;
+}
+
+void Map::setName(MapName&& newName_)
+{
+	m_name = std::move(newName_);
 }

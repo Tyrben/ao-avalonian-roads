@@ -1,0 +1,3 @@
+This project is ment to work with any source of data as long as we can load it. Currently a system of Google Forms and Google Sheets are used to fill in informations regarding Avalonian portals and Avalonion roads. The interface is a Google webservice. But it can be easily extended to other source of information, online or offline.
+
+One licence concern was taken in consideration: to work on information shared "around the table" (as SandBox says). It is the case. This software is more a tool than a frontend (where all eyes are focused).

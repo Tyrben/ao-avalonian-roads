@@ -2,20 +2,35 @@
 
 [![CMake](https://github.com/Tyrben/ao-avalonian-roads/workflows/CMake/badge.svg)](https://github.com/Tyrben/ao-avalonian-roads/actions)
 
-Multiple tools to import info about Albion Online avalonian roads and portals, search for shortest paths, merge data...
+__ao-avalonian-roads-gps__ is a command line tool to search routes into Albion Online Avalonian roads.
 
-This project is ment to work with any source of data as long as we can load it. Currently a system of Google Forms and Google Sheets are used to fill in informations regarding Avalonian portals and Avalonion roads. The interface is a Google webservice. But it can be easily extended to other source of information, online or offline.
+To be functionnal, it uses 2 sources of data:
+- the Royal continent and Black Zone map list and gate list
+- a list of currently discovered Avalonian maps and bindings between them
 
-One licence concern was taken in consideration: to work on information shared "around the table" (as SandBox says). It is the case. This software is more a tool than a frontend (where all eyes are focused).
+It was tested successfully on Linux and Windows.
 
-[learn more...]()
+[learn more...](docs/more-info.md)
 
 ## Build
-The building system is based on cmake and any C++ compiler. It was tested on Linux and Windows but should work on other configurations too.
+The building system is based on CMake and any C++ compiler. It was built on Linux and Windows but should work on other configurations too.
 
-This projet is composed of a series of elements: static librairies, apps, tests... but the main element is the end user gps command line.
+This projet is composed of a series of elements: static librairies, apps, tests... but the main element is the end user GPS command line, located in /app.
 
-[learn more...]()
+### Linux, WSL or Cygwin
+
+    mkdir build
+    cd build
+    cmake ..
+    make
+
+### Windows Visual Studio
+
+    mkdir build
+    cd build
+    cmake ..
+
+Open the .sln in Visual Studio.
 
 ## Usage
 
@@ -25,7 +40,7 @@ This projet is composed of a series of elements: static librairies, apps, tests.
 
 * `route`
   * `origin`: exact name of the map of origin
-  * `destination`: exact name of the map of origin
+  * `destination`: exact name of the map of destination
 
 ### Example
 
@@ -33,22 +48,11 @@ This projet is composed of a series of elements: static librairies, apps, tests.
 
 ## Contributing
 
-### Coding
-The gps application inside this project is just one part, but the visible part. The choice of C++ was a question of available skills. But it can be transposed to any other ecosystem.
+You can contrubute to this project eather by coding, managing the project, writing documentation, promoting it outside or just by using it and making feedbacks.
 
-Free to you to participate to this project or to create your own. We would be glad to hear about your project in the future.
-
-### Documentation - Promotion
-This project is born in a small guild between few persons. It responds to some needs, but it was tought with a capacity of expansion and genericity.
-
-Up to you to speak of this project around you, to fix our documentations, or to fork this project.
-
-### Feedback
-The Github issue system allows you to participate. You can write end-user feedbacks, bug reports, expectations...
-
-Or write in-code reviews, remarks, retake proposals...
+Look at the project tab on GitHub, its where the project is managed. Also look at the Issues tab, it's where you can report a problem.
 
 [learn more...](docs/CONTRIBUTING.md)
 
 ## Evolution
-It is planed to be extended with a GUI. Maybe to make the bridge to [Portaler](https://github.com/Portaler-Zone/portaler-core), another ao mature project.
+It is planed to extend it with a GUI. Also to make the bridge to [Portaler](https://github.com/Portaler-Zone/portaler-core), another ao mature project.

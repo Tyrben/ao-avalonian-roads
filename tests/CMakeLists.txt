@@ -5,11 +5,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(tests_SOURCES
 	csvformat_test.h
-	id_test.h
 	map_test.h
 	navigationsystem_test.h
 	portal_test.h
-	uniquenumbergenerator_test.h
+	position_test.h
 	visitor_test.h
 	world_test.h)
 

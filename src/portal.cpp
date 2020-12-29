@@ -9,32 +9,32 @@
 
 }*/
 
-Portal::Portal(Type type_, const MapId& mapLeft_, const MapId& mapRight_)
-	: m_id{ UniqueNumberGenerator::makeNew() }
-	, m_type(type_)
+Portal::Portal(Type type_, const MapName& mapLeft_, const MapName& mapRight_)
+	: m_type(type_)
 	, m_positionLeft{ Position({ 0, 0 }, mapLeft_) }
 	, m_positionRight{ Position({ 0, 0 }, mapRight_) }
 {
 }
 
-Portal::Portal(Type type_, Position positionLeft_, Position positionRight_)
-	: m_id{ UniqueNumberGenerator::makeNew() }
-	, m_type(type_)
+Portal::Portal(Type type_, const Position& positionLeft_, const Position& positionRight_)
+	: m_type(type_)
 	, m_positionLeft(positionLeft_)
 	, m_positionRight(positionRight_)
 {
 }
 
-const PortalId& Portal::getId() const
+Portal::Portal(Type type_, Position&& positionLeft_, Position&& positionRight_)
+	: m_type(type_)
+	, m_positionLeft(positionLeft_)
+	, m_positionRight(positionRight_)
 {
-	return m_id;
 }
 
 //std::pair<const MapId&, const MapId&> Portal::getLink() const
-std::pair<const MapId, const MapId> Portal::getLink() const
+std::pair<const MapName, const MapName> Portal::getLink() const
 {
 	//copie plutot ?
-	return std::make_pair(m_positionLeft.mapId, m_positionRight.mapId);
+	return std::make_pair(m_positionLeft.mapName, m_positionRight.mapName);
 }
 
 bool Portal::isEnded() const

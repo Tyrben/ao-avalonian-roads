@@ -1,25 +1,24 @@
 #pragma once
 
-#include "id.h"
-
 #include <map>
 #include <string>
+
+using MapName = std::string;
 
 class Map
 {
 public:
-	Map(std::string name_);
-	Map(std::string name_, MapId forcedId_);
+	Map(const MapName& name_);
+	Map(MapName&& name_);
 
-	const MapId& getId() const;
-	const std::string& getName() const;
+	const MapName& getName() const;
 
-	void setName(std::string newName_);
+	void setName(const MapName& newName_);
+	void setName(MapName&& newName_);
 
 	friend bool operator< (const Map&, const Map&);
 
 private:
-	MapId m_id;
 	std::string m_name;
 };
 

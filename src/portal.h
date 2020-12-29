@@ -1,6 +1,6 @@
 #pragma once
+#include "map.h"
 
-#include "id.h"
 #include <chrono>
 
 struct Coordinates
@@ -11,14 +11,14 @@ struct Coordinates
 
 struct Position
 {
-	Position(Coordinates coordinates_, const MapId& mapid_)
+	Position(Coordinates coordinates_, MapName mapName_)
 		: coordinates{ coordinates_ }
-		, mapId{ mapid_ }
+		, mapName{ mapName_ }
 	{
 	}
 
 	Coordinates coordinates;
-	const MapId& mapId;
+	const MapName mapName;
 };
 
 class Portal
@@ -33,13 +33,13 @@ public:
 		Static
 	};
 
-	/**
-	* endTime is used as a UTC time (warning)
-	*/
-	Portal(Type, const MapId&, const MapId&); //optionnel, ca construit les Positions
-	Portal(Type, Position, Position); // TODO change parameters order?
-	const PortalId& getId() const; // TODO plutot par copie que par reference, c'est un int
-	std::pair<const MapId, const MapId> getLink() const; //TODO retake, reinterogate about needs
+
+	Portal(Type, const MapName&, const MapName&); //optionnel, ca construit les Positions
+	Portal(Type, const Position&, const Position&); // TODO change parameters order?
+	Portal(Type, Position&&, Position&&);
+
+	std::pair<const MapName, const MapName> getLink() const; //TODO retake, reinterogate about needs
+	//TODO pair of Position?
 
 	void setEndTime(std::chrono::time_point<std::chrono::system_clock> endTime_);
 	bool isEnded() const; // elapsed
@@ -49,6 +49,5 @@ private:
 	Position m_positionRight;
 	
 	Type m_type;
-	std::chrono::time_point<std::chrono::system_clock> m_endTime;
-	PortalId m_id;
+	std::chrono::time_point<std::chrono::system_clock> m_endTime; //!< UTC time
 };

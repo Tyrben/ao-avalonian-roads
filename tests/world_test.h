@@ -20,9 +20,7 @@ TEST_CASE( "World can accumulate a map", "[World]" ) {
 
 TEST_CASE( "World can accumulate a portal", "[World]" ) {
 	World w;
-	Map m1("test1");
-	Map m2("test2");
-	Portal p1(Portal::Type::Blue, m1.getId(), m2.getId());
+	Portal p1(Portal::Type::Blue, "map1", "map2");
 	w.addPortal(p1);
 	REQUIRE(w.getPortals().size() == 1);
 }

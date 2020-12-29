@@ -28,7 +28,7 @@ bool World::addMap(Map map_)
 	return true;
 }
 
-const Map& World::getMapByName(const std::string& name_) const
+const Map& World::getMapByName(const MapName& name_) const
 {
 	for (const Map& map : m_maps)
 	{
