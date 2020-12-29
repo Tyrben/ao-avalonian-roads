@@ -46,6 +46,16 @@ Open the .sln in Visual Studio.
 
     ao-avalonian-roads-gps route --origin="Bridgewatch" --destination="Casos-Aiagsum"
 
+## Fill in information
+
+This project is based on informations manually entered by the user (and co). Two forms are available (English version).
+
+### Avalonian maps
+[Form to fill in map info](https://docs.google.com/forms/d/e/1FAIpQLScVv3Lxkc8Ig-DpTYPW92ihbiDzNodOCFTfyFT0qQySbeywHg/viewform?usp=sf_link)
+
+### Avalonian portals
+[Form to fill in portals](https://docs.google.com/forms/d/e/1FAIpQLSdcBWO9uP78dlcKFj9s_kiUqFDD-Sl5X0OVbl3WwXdN7EwFqw/viewform?usp=sf_link)
+
 ## Contributing
 
 You can contrubute to this project eather by coding, managing the project, writing documentation, promoting it outside or just by using it and making feedbacks.
