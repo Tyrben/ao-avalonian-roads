@@ -3,7 +3,7 @@
 #include <lyra/lyra.hpp>
 
 
-// hydrate ca lit un fichier ou une base, si t'as dÈj‡ les data... c'est plutot des addPortal, addMap
+// hydrate ca lit un fichier ou une base, si t'as d√©j√† les data... c'est plutot des addPortal, addMap
 void hydrateForTest(World& w)
 {
 	Map map1("name1");
@@ -74,17 +74,17 @@ struct RouteCommand
 		}
 		else
 		{
-			NavigationSystem ns;
+
 			World w;
-			w.accept(ns);
-			
+
 			//test tmp
 			hydrateForTest(w);
 
 			const Map& origin = w.getMapByName(originMapName);
 			const Map& destination = w.getMapByName(destinationMapName);
 
-			ns.printRoute(origin.getName(), destination.getName());
+			NavigationSystem ns;
+			w.accept(&ns, origin.getName().c_str(), destination.getName().c_str());
 		}
 	}
 };

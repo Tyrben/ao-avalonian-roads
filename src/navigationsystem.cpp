@@ -5,16 +5,16 @@
 
 #include <iostream> //for debug
 
-void NavigationSystem::init_(Graph* g_) const
+void NavigationSystem::init_(Graph* g_, const World* world_) const
 {
 	// You can subclass Node, in order to add functionalities to the nodes.
 
-	for (const auto& map : m_world->getMaps())
+	for (const auto& map : world_->getMaps())
 	{
 		/*Node& currentNode = */g_->makeNode<Node>(map.getName());
 	}
 
-	for (const auto& portal : m_world->getPortals())
+	for (const auto& portal : world_->getPortals())
 	{
 		//TODO le portal a le bon ID, mais n'a pas les bons ID de maps
 		auto link = portal.getLink();
@@ -25,20 +25,16 @@ void NavigationSystem::init_(Graph* g_) const
 	}
 }
 
-void NavigationSystem::printRoute(MapName from_, MapName to_) const
+void NavigationSystem::printRoute(MapName from_, MapName to_, const Graph& g_) const
 {
-	//TODO try catch, some operations can crash in Graph
-	Graph g;
-	init_(&g); //the World should continue evolve between two prints
-
-	const Node* from = g.findNodeById(from_);
-	const Node* to = g.findNodeById(to_);
+	const Node* from = g_.findNodeById(from_);
+	const Node* to = g_.findNodeById(to_);
 
 	if (!from) return;
 	if (!to) return;
 
 	// find the shortest path between any type of nodes, regarding the weight of your edges
-	auto path = g.findShortestPathDijkstra(*from, *to);
+	auto path = g_.findShortestPathDijkstra(*from, *to);
 	for (Edge* edge : path)
 	{
 		if (!edge) return;
@@ -52,7 +48,12 @@ void NavigationSystem::printRoute(MapName from_, MapName to_) const
 }
 
 //TODO retake, this is not how the visitor pattern should be used
-void NavigationSystem::visit(World* w_)
+void NavigationSystem::visit(World* w_, std::va_list args_)
 {
-	m_world = w_;
+	//TODO try catch, some operations can crash in Graph
+	Graph g;
+	init_(&g, w_); //the World should continue evolve between two prints
+
+	double num = va_arg(args_, double);
+	double num2 = va_arg(args_, double);
 }

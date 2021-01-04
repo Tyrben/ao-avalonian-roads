@@ -4,28 +4,29 @@
 
 struct TestVisitedElement : public Element<TestVisitedElement>
 {
-    bool wasVisited = false;
+	bool wasVisited = false;
 
-    void accept(Visitor<TestVisitedElement>& visitor_)
-    {
-        visitor_.visit(this);
-    }
+	void accept(Visitor<TestVisitedElement>* visitor_...)
+	{
+		va_list emptyArguments;
+		visitor_->visit(this, emptyArguments);
+	}
 
 	// Something (not part of the pattern) to test we have visited the Element
-    bool getState() const
-    {
-        return wasVisited;
-    }
+	bool getState() const
+	{
+		return wasVisited;
+	}
 
-    void setState(bool newState)
-    {
-        wasVisited = newState;
-    }
+	void setState(bool newState)
+	{
+		wasVisited = newState;
+	}
 };
 
 struct TestVisitor : public Visitor<TestVisitedElement>
 {
-    void visit(TestVisitedElement* visited_)
+    void visit(TestVisitedElement* visited_, std::va_list /*args_*/)
     {
         visited_->setState(true);
     }
@@ -34,7 +35,7 @@ struct TestVisitor : public Visitor<TestVisitedElement>
 TEST_CASE( "Visitor can visit an element", "[Visitor]" ) {
     TestVisitedElement visited;
     TestVisitor visitor;
-    visited.accept(visitor);
+    visited.accept(&visitor);
 	
     REQUIRE(visited.getState());
 }

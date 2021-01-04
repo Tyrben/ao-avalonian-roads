@@ -108,7 +108,7 @@ public:
     * Retrieves a node by the given id. 
     * @return a pointer to the node or NULL if not found. 
     */
-    Node* findNodeById(const std::string& id);
+    Node* findNodeById(const std::string& id) const;
 
     /** Retrieves all edges that have rSrc as source node and rDst as destination node. */
     tEdges findEdges(const Node& rSrc, const Node& rDst);
@@ -132,7 +132,7 @@ public:
     * @param pFoundDst contains the address of the destination node or is set to NULL, if no path was found.
     * @return a map of nodes with associated routing information to the source node..
     */
-    tDijkstraMap findDistancesDijkstra(const Node& rSrcNode, const Node* pDstNode, Node** pFoundDst);
+    tDijkstraMap findDistancesDijkstra(const Node& rSrcNode, const Node* pDstNode, Node** pFoundDst) const;
 
     /**
     * Calculate the shortest path from a source node to a destination node.
@@ -140,7 +140,7 @@ public:
     * @param the destination node.
     * @return tPath is a deque of edges and represents the route from rSrc to rDst.
     */
-    tPath findShortestPathDijkstra(const Node& rSrc, const Node& rDst);
+    tPath findShortestPathDijkstra(const Node& rSrc, const Node& rDst) const;
 
 
 protected:

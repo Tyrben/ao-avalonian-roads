@@ -28,16 +28,13 @@ public:
 	//std::list<MapId> getShortestRouteAt(from, to, date);
 	//responseFormat directions(MapId, MapId);
 
-	void printRoute(MapName, MapName) const;
+	void printRoute(MapName, MapName, const Graph&) const;
 
 
 
 
-	/*virtual*/ void visit(World*);
+	/*virtual*/ void visit(World*, std::va_list);
 
 private:
-	void init_(Graph* g_) const;
-	//Graph m_graph;
-
-	World* m_world;
+	void init_(Graph* g_, const World* w_) const;
 };

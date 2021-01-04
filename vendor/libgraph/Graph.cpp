@@ -1,4 +1,4 @@
-﻿#include "Graph.h"
+#include "Graph.h"
 
 #include <map>
 #include <limits>
@@ -57,7 +57,7 @@ bool Graph::remove(const Node& rNode)
 
 //-------------------------------------------------------------------------------------------------
 
-Node* Graph::findNodeById(const std::string& id)
+Node* Graph::findNodeById(const std::string& id) const
 {
     auto it = m_nodes.begin();
     // just need to check the lower bound, since nodes are sorted by id.
@@ -136,8 +136,8 @@ void Graph::saveAsDot(const std::string& rFilename) const
 /**
 * This is based on https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 */
-Graph::tDijkstraMap Graph::findDistancesDijkstra(
-        const Node& rSrcNode, const Node* pDstNode, Node** pFoundDst)
+Graph::tDijkstraMap Graph::findDistancesDijkstra (
+        const Node& rSrcNode, const Node* pDstNode, Node** pFoundDst) const
 {
     tDijkstraMap nodeTable;
     std::list<Node*> Q;
@@ -211,7 +211,7 @@ Graph::tDijkstraMap Graph::findDistancesDijkstra(
 
 //-------------------------------------------------------------------------------------------------
 
-Graph::tPath Graph::findShortestPathDijkstra(const Node& rSrc, const Node& rDst)
+Graph::tPath Graph::findShortestPathDijkstra(const Node& rSrc, const Node& rDst) const
 {
     Graph::tPath path;
     Node* currentNode;
