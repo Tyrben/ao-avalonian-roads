@@ -8,7 +8,7 @@ TEST_CASE("Map name is returned", "[Map]")
 	REQUIRE(std::string("name1").compare(map1.getName()) == 0);
 }
 
-TEST_CASE("Display MapId contend in a map", "[Map]")
+TEST_CASE("Display MapName of a map", "[Map]")
 {
 	Map map1("name1");
 	Map map2("name2");

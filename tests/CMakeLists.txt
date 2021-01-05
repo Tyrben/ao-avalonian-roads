@@ -9,7 +9,6 @@ set(tests_SOURCES
 	navigationsystem_test.h
 	portal_test.h
 	position_test.h
-	visitor_test.h
 	world_test.h)
 
 link_directories(../vendor/libgraph)

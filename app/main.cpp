@@ -84,7 +84,9 @@ struct RouteCommand
 			const Map& destination = w.getMapByName(destinationMapName);
 
 			NavigationSystem ns;
-			w.accept(&ns, origin.getName().c_str(), destination.getName().c_str());
+			//ns.getShortestRoute(w, origin.getName(), destination.getName());
+
+			ns.printRoute(w, origin.getName(), destination.getName());
 		}
 	}
 };

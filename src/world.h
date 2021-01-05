@@ -2,12 +2,10 @@
 
 #include "map.h"
 #include "portal.h"
-#include "visitor/element.h"
-#include "visitor/visitor.h"
 
 #include <vector>
 
-class World : public Element<World>
+class World
 {
 public:
 	int deleteExpiredPortals();
@@ -26,8 +24,6 @@ public:
 
 	//bool execRequest(Functor);
     const Map& getMapByName(const MapName& name_) const;
-
-	/*virtual*/ void accept(Visitor<World>*...); //!< Visitor pattern
 
 	const std::vector<Portal>& getPortals() const;
 	const std::vector<Map>& getMaps() const;

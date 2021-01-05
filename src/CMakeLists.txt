@@ -12,8 +12,6 @@ set(class_SOURCES
 	navigationsystem.cpp
 	portal.h
 	portal.cpp
-	visitor/element.h
-	visitor/visitor.h
 	world.h
 	world.cpp)
 

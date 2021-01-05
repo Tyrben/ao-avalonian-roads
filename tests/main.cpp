@@ -7,5 +7,4 @@
 #include "navigationsystem_test.h"
 #include "portal_test.h"
 #include "position_test.h"
-#include "visitor_test.h"
 #include "world_test.h"

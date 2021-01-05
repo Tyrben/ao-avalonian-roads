@@ -1,14 +1,5 @@
 #include "world.h"
 
-//for Visitor pattern
-void World::accept(Visitor<World>* visitor_...)
-{
-	va_list args;
-	va_start(args, visitor_);
-	visitor_->visit(this, args);
-	va_end(args);
-}
-
 const std::vector<Portal>& World::getPortals() const
 {
 	return m_portals;

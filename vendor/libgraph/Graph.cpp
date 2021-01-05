@@ -112,14 +112,14 @@ Graph::tEdges Graph::findEdges(const std::string& srcId, const std::string& dstI
 
 std::string Graph::toString() const
 {
-	std::string result;
+    std::string result;
 
-	for (auto it = m_edges.begin(); it != m_edges.end(); it++)
-	{
-		result += (*it)->toString() + "\n";
-	}
+    for (auto it = m_edges.begin(); it != m_edges.end(); it++)
+    {
+        result += (*it)->toString() + "\n";
+    }
 
-	return result;
+    return result;
 }
 
 

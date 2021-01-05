@@ -47,7 +47,7 @@ public:
 private:
 	Position m_positionLeft;
 	Position m_positionRight;
-	
+
 	Type m_type;
 	std::chrono::time_point<std::chrono::system_clock> m_endTime; //!< UTC time
 };

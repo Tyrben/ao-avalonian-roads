@@ -15,7 +15,7 @@ TEST_CASE( "World can accumulate a map", "[World]" ) {
 	World w;
 	Map m1("test");
 	w.addMap(m1);
-    REQUIRE(w.getMaps().size() == 1);
+	REQUIRE(w.getMaps().size() == 1);
 }
 
 TEST_CASE( "World can accumulate a portal", "[World]" ) {

@@ -117,7 +117,7 @@ public:
     tEdges findEdges(const std::string& srcId, const std::string& dstId);
 
     /** Generates a list of all connected nodes. Each line represents an edge. */
-	std::string toString() const;
+    std::string toString() const;
 
     /**
     * Saves the graph as dot file. The tool Graphiz can generate an image from this file.

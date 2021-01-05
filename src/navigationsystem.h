@@ -1,6 +1,5 @@
 #pragma once
 
-#include "visitor/visitor.h"
 #include "world.h"
 #include "map.h"
 #include "portal.h"
@@ -11,7 +10,7 @@
 class Graph;
 //auto shortestRoute = makeShortestRoute(World);
 
-class NavigationSystem : public Visitor<World>
+class NavigationSystem
 {
 public:
 /*	
@@ -24,17 +23,14 @@ public:
 	Map& getMapById(const MapId&) const;
 	Map& getMapByName(std::string) const;*/
 
-	std::list<MapName> getShortestRoute(MapName, MapName) const;
+	std::list<MapName> getShortestRoute(const World&, MapName, MapName) const;
 	//std::list<MapId> getShortestRouteAt(from, to, date);
 	//responseFormat directions(MapId, MapId);
 
 	void printRoute(MapName, MapName, const Graph&) const;
 
-
-
-
-	/*virtual*/ void visit(World*, std::va_list);
+	void printRoute(const World&, MapName, MapName) const;
 
 private:
-	void init_(Graph* g_, const World* w_) const;
+	void init_(Graph& g_, const World& world_) const;
 };
