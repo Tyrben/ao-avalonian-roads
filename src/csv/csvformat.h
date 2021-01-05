@@ -16,7 +16,8 @@ public:
 	using Record = std::vector<Cell>;
 	using DataSet = std::vector<Record>;
 
-	CsvFormat(std::string filename_ = "");
+	CsvFormat() = default;
+	CsvFormat(std::string filename_);
 
 	void setDelimiter(char);
 	void loadFromFile(std::string filename_, bool firstLineIsHeader_ = false);

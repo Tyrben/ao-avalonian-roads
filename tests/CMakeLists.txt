@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.9)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#set(CMAKE_CXX_STANDARD 17)
+#set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(tests_SOURCES
 	csvformat_test.h
@@ -14,6 +14,8 @@ set(tests_SOURCES
 link_directories(../vendor/libgraph)
 
 add_executable(ao-avalonian-roads-tests main.cpp ${tests_SOURCES})
+
+target_compile_features(ao-avalonian-roads-tests PRIVATE cxx_std_17)
 
 target_link_libraries(ao-avalonian-roads-tests
 	LINK_PUBLIC ao-avalonian-roads-lib

@@ -41,7 +41,7 @@ std::string CsvFormat::joinLine(const CsvFormat::Record& record_, char delimiter
 
 CsvFormat::CsvFormat(std::string filename_)
 {
-
+	loadFromFile(filename_);
 }
 
 void CsvFormat::setDelimiter(char delimiter_)
@@ -65,7 +65,6 @@ void CsvFormat::writeToFile(std::string filename_) const
 {
 	std::ofstream outputFile(filename_);
 
-	// Make sure the file is open
 	if (!outputFile.is_open()) throw std::runtime_error("Could not open file");
 
 	if (m_hasHeaders)
