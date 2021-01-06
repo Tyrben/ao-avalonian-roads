@@ -1,6 +1,9 @@
+#include "csv/csvformat.h"
 #include "navigationsystem.h"
 #include "world.h"
 #include <lyra/lyra.hpp>
+
+#include <set>
 
 
 // hydrate ca lit un fichier ou une base, si t'as déjà les data... c'est plutot des addPortal, addMap
@@ -77,16 +80,45 @@ struct RouteCommand
 
 			World w;
 
+
+			CsvFormat csv;
+			csv.loadFromFile("D:\\git\\autres\\ao-avalonian-roads\\scripts\\static-maps.csv", true);
+
+			std::map<std::string, std::string> idMapEquiv;
+			std::set<std::string> uniqueMaps;
+
+			for (const auto& map : csv.getData())
+			{
+				idMapEquiv[std::get<std::string>(map.at(0))] = std::get<std::string>(map.at(1));
+				uniqueMaps.insert(std::get<std::string>(map.at(1)));
+			}
+
+			for (const auto& map : uniqueMaps)
+			{
+				Map map2(map);
+				w.addMap(map2);
+			}
+
+			CsvFormat csvPortals;
+			csvPortals.loadFromFile("D:\\git\\autres\\ao-avalonian-roads\\scripts\\static-portals.csv", true);
+
+			for (const auto& portal : csvPortals.getData())
+			{
+				Portal portal2(Portal::Type::Static, idMapEquiv[std::get<std::string>(portal.at(0))], idMapEquiv[std::get<std::string>(portal.at(1))]);
+				w.addPortal(portal2);
+			}
 			//test tmp
-			hydrateForTest(w);
+			//hydrateForTest(w);
 
 			const Map& origin = w.getMapByName(originMapName);
 			const Map& destination = w.getMapByName(destinationMapName);
 
+			//TODO manager an empty response
 			NavigationSystem ns;
 			//ns.getShortestRoute(w, origin.getName(), destination.getName());
 
-			ns.printRoute(w, origin.getName(), destination.getName());
+			//ns.printRoute(w, origin.getName(), destination.getName());
+			ns.printRoute(w, originMapName, destinationMapName);
 		}
 	}
 };

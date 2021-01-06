@@ -53,7 +53,8 @@ void CsvFormat::loadFromFile(std::string filename_, bool firstLineIsHeader_)
 {
 	std::ifstream inputFile(filename_);
 
-	if (!inputFile.is_open()) throw std::runtime_error("Could not open file");
+	if (!inputFile.is_open()) 
+		throw std::runtime_error("Could not open file");
 	if (!inputFile.good())
 		return;
 

@@ -8,14 +8,14 @@
 
 std::string prepareTestFile()
 {
-	std::filesystem::path ph("/tmp/test.csv"); //= std::filesystem::temp_directory_path() / std::filesystem::path("test.csv");
-	//std::filesystem::create_directories(ph);
+	std::filesystem::path ph = std::filesystem::temp_directory_path() / std::filesystem::path("test.csv"); //("/tmp/test.csv"); //
+	std::filesystem::create_directories(ph);
 
 	std::ofstream outputFile(ph.string());
 
 	if (!outputFile.is_open()) throw std::runtime_error("Could not open file");
 
-	outputFile << "test;is;valid";
+	outputFile << "aaa,bbb,3,ddd";
 
 	return ph.string();
 }
