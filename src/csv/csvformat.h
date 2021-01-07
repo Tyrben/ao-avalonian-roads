@@ -1,7 +1,6 @@
 #pragma once
 //First inspired from https://www.gormanalysis.com/blog/reading-and-writing-csv-files-with-cpp
 
-#include <iostream>
 #include <string>
 #include <variant>
 #include <vector>

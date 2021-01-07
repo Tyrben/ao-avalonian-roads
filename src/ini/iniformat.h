@@ -1,21 +1,19 @@
+#pragma once
 
-std::ifstream cFile("config2.txt");
-if (!cFile.is_open())
+//WIP #include "../tools/stringtools.h"
+
+#include <map>
+#include <string>
+
+class IniFormat
 {
-	std::cerr << "Couldn't open config file for reading.\n";
-	return;
-}
+public:
+	IniFormat() = default;
+	IniFormat(std::string filename_); // TODO only accept std::filesystem::file
 
-std::string line;
-while (std::getline(cFile, line))
-{
-	line.erase(std::remove_if(line.begin(), line.end(), isspace),
-		line.end());
-	if (line[0] == '#' || line.empty())
-		continue;
-	auto delimiterPos = line.find("=");
-	auto name = line.substr(0, delimiterPos);
-	auto value = line.substr(delimiterPos + 1);
-	std::cout << name << " " << value << '\n';
-}
+	void loadFromFile(const std::string& filename_);
+	void loadFromFile(std::string&& filename_);
 
+private:
+	std::map<std::string, std::string> m_parameters;
+};

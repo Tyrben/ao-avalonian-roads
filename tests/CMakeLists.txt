@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.9)
 
 set(tests_SOURCES
 	csvformat_test.h
+	iniformat_test.h
 	map_test.h
 	navigationsystem_test.h
 	portal_test.h

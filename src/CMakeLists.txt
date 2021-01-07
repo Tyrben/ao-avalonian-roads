@@ -6,12 +6,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(class_SOURCES
 	csv/csvformat.h
 	csv/csvformat.cpp
+	ini/iniformat.h
+	ini/iniformat.cpp
 	map.h
 	map.cpp
 	navigationsystem.h
 	navigationsystem.cpp
 	portal.h
 	portal.cpp
+	tools/stringtools.h
 	world.h
 	world.cpp)
 

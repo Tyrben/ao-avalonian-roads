@@ -3,6 +3,7 @@
 
 //A set of independent tests
 #include "csvformat_test.h"
+#include "iniformat_test.h"
 #include "map_test.h"
 #include "navigationsystem_test.h"
 #include "portal_test.h"
