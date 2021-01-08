@@ -6,7 +6,7 @@
 #include <fstream>
 #include <string>
 
-std::string prepareTestFile()
+std::string prepareCsvTestFile()
 {
 	std::filesystem::path ph = std::filesystem::temp_directory_path() / std::filesystem::path("test.csv"); //("/tmp/test.csv"); //
 	std::filesystem::create_directories(ph);
@@ -57,7 +57,7 @@ TEST_CASE("CsvFormat can deserialize a stream", "[Csv]") {
 }
 
 TEST_CASE("CsvFormat can load a file", "[Csv]") {
-	std::string filename = prepareTestFile();
+	std::string filename = prepareCsvTestFile();
 
 	CsvFormat csv;
 	csv.loadFromFile(filename, true);

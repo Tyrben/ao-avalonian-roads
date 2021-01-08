@@ -25,6 +25,6 @@ void IniFormat::loadFromFile(const std::string& filename_)
 		auto name = line.substr(0, delimiterPos);
 		auto value = line.substr(delimiterPos + 1);
 		m_parameters[name] = value;
-		std::cout << name << " " << value << '\n';
+		std::cout << name << "= " << value << '\n';
 	}
 }
