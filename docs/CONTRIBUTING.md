@@ -12,7 +12,7 @@ The current base of code is written in C\++17. We are no expert of this language
 The evolution to C\++20 is possible, but have in mind we would like to stake compatible with at least Ubuntu 20.04 LTS and Windows Visual Studio 2019.
 
 ### CMake
-The current base of code is built around Modern CMake 3 in its revision 3.9. We are no expert of this build system. Fill free to rewrite portions of code.
+The current base of code is built around "More" Modern CMake 3 in its revision 3.13. We are no expert of this build system. Fill free to rewrite portions of code.
 
 The project should always be able to build and compile under linux and windows.
 

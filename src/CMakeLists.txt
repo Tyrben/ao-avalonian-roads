@@ -1,24 +1,32 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.13)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_library(ao-avalonian-roads-lib STATIC)
 
-set(class_SOURCES
-	csv/csvformat.h
-	csv/csvformat.cpp
-	ini/iniformat.h
-	ini/iniformat.cpp
-	map.h
-	map.cpp
-	navigationsystem.h
-	navigationsystem.cpp
-	portal.h
-	portal.cpp
-	tools/stringtools.h
-	world.h
-	world.cpp)
+target_compile_features(ao-avalonian-roads-lib INTERFACE cxx_std_17)
 
-add_library(ao-avalonian-roads-lib STATIC ${class_SOURCES})
+target_sources(ao-avalonian-roads-lib
+	PRIVATE csv/csvformat.cpp
+		ini/iniformat.cpp
+		map.cpp
+		navigationsystem.cpp
+		portal.cpp
+		world.cpp
+	PUBLIC conf/localdata.h
+		csv/csvformat.h
+		ini/iniformat.h
+		map.h
+		navigationsystem.h
+		portal.h
+		tools/stringtools.h
+		world.h)
+
+if(CMAKE_HOST_WIN32)
+	target_sources(ao-avalonian-roads-lib
+		PRIVATE conf/localdata_win32.cpp)
+elseif(CMAKE_HOST_UNIX)
+	target_sources(ao-avalonian-roads-lib
+		PRIVATE conf/localdata_posix.cpp)
+endif()
 
 target_include_directories(ao-avalonian-roads-lib
 	PRIVATE ../vendor/libgraph
