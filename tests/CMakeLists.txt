@@ -9,6 +9,7 @@ target_compile_features(ao-avalonian-roads-tests PRIVATE cxx_std_17)
 target_sources(ao-avalonian-roads-tests
 	PRIVATE csvformat_test.h
 		iniformat_test.h
+		localdata_test.h
 		map_test.h
 		navigationsystem_test.h
 		portal_test.h
@@ -16,6 +17,14 @@ target_sources(ao-avalonian-roads-tests
 		world_test.h
 		
 		main.cpp)
+
+if(CMAKE_HOST_WIN32)
+	target_sources(ao-avalonian-roads-tests
+		PRIVATE localdata_win32_test.h)
+elseif(CMAKE_HOST_UNIX)
+	target_sources(ao-avalonian-roads-tests
+		PRIVATE localdata_posix_test.h)
+endif()
 
 target_link_libraries(ao-avalonian-roads-tests
 	LINK_PUBLIC ao-avalonian-roads-lib

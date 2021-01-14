@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 3.13)
 
 add_library(ao-avalonian-roads-lib STATIC)
 
-target_compile_features(ao-avalonian-roads-lib INTERFACE cxx_std_17)
+target_compile_features(ao-avalonian-roads-lib PUBLIC cxx_std_17)
 
 target_sources(ao-avalonian-roads-lib
-	PRIVATE csv/csvformat.cpp
+	PRIVATE conf/localdata.cpp
+		csv/csvformat.cpp
 		ini/iniformat.cpp
 		map.cpp
 		navigationsystem.cpp
