@@ -1,9 +1,10 @@
 #include "iniformat.h"
 
 #include <algorithm>
-#include <cctype>
+#include <cctype> //isspace
 #include <fstream>
 #include <iostream>
+#include <locale> //isspace
 
 void IniFormat::loadFromFile(const std::string& filename_)
 {
@@ -17,7 +18,7 @@ void IniFormat::loadFromFile(const std::string& filename_)
 	std::string line;
 	while (std::getline(cFile, line))
 	{
-		line.erase(std::remove_if(line.begin(), line.end(), std::isspace),
+		line.erase(std::remove_if(line.begin(), line.end(), ::isspace),
 			line.end());
 		if (line[0] == '#' || line[0] == ';' || line[0] == '[' || line.empty())
 			continue;

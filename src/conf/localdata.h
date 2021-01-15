@@ -14,4 +14,3 @@ struct LocalData
 	static bool openStreamOnDynamicMaps(std::ifstream& stream_);
 	static bool openStreamOnDynamicPortals(std::ifstream& stream_);
 };
-

@@ -9,7 +9,7 @@ namespace tools
 	static inline void ltrim(std::string &s)
 	{
 		s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](char ch) {
-			return !std::isspace(ch);
+			return !::isspace(ch);
 		}));
 	}
 
@@ -17,7 +17,7 @@ namespace tools
 	static inline void rtrim(std::string &s)
 	{
 		s.erase(std::find_if(s.rbegin(), s.rend(), [](char ch) {
-			return !std::isspace(ch);
+			return !::isspace(ch);
 		}).base(), s.end());
 	}
 
