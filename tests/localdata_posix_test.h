@@ -1,7 +1,10 @@
 #pragma once
-#include <map.h>
+#include <conf/localdata.h>
 
-TEST_CASE( "Map has a name", "[Map]" ) {
-	Map m("test");
-	REQUIRE(m.getName() == "test");
+#include <fstream>
+
+TEST_CASE( "LocalData Posix...", "[LocalData]" ) {
+	std::ifstream inputConfig;
+	LocalData::openStreamOnConfig(inputConfig);
+	REQUIRE(true);
 }
