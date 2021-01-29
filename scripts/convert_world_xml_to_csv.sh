@@ -12,3 +12,5 @@
 
 # Info regarding exits (portals)
 { echo "Origin,Destination" ; xidel https://github.com/broderickhyman/ao-bin-dumps/raw/master/cluster/world.xml -e '/world/clusters/cluster[ fn:matches(@id, "^(PSG-)?[0-9]{4}$") ]/exits/exit[ fn:matches(@targettype, "^Cluster$") ]/fn:concat(../../@id, ",", fn:substring-after(@targetid, "@"))' 2> /dev/null | sed -n -E '/^[0-9]{4};[0-9]{4}$/p'; } > static-portals.csv
+
+# Alternate URL: https://raw.githubusercontent.com/broderickhyman/ao-bin-dumps/master/cluster/world.xml
