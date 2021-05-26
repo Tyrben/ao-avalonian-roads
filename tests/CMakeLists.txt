@@ -6,16 +6,13 @@ add_executable(ao-avalonian-roads-tests)
 
 target_compile_features(ao-avalonian-roads-tests PRIVATE cxx_std_17)
 
+
+# Any new _test.h file will be added to the batch test
+file(GLOB_RECURSE all_test_files
+	**/*_test.h)
+
 target_sources(ao-avalonian-roads-tests
-	PRIVATE csvformat_test.h
-		iniformat_test.h
-		localdata_test.h
-		map_test.h
-		navigationsystem_test.h
-		portal_test.h
-		position_test.h
-		world_test.h
-		
+	PRIVATE ${all_test_files}
 		main.cpp)
 
 if(CMAKE_HOST_WIN32)
@@ -39,7 +36,7 @@ endif()
 target_include_directories(ao-avalonian-roads-tests
 	PRIVATE ../vendor/libgraph
 	PRIVATE ../vendor/catch
-	PRIVATE ../src )
+	PRIVATE ../src/lib )
 
 add_test(NAME ao-avalonian-roads-tests
 	COMMAND ao-avalonian-roads-tests)
