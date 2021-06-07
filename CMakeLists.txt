@@ -6,6 +6,8 @@ project(ao-avalonian-roads
 	HOMEPAGE_URL https://github.com/Tyrben/ao-avalonian-roads
 	LANGUAGES CXX)
 
+add_compile_definitions(UNICODE _UNICODE)
+
 # Enable testing for the project
 enable_testing()
 
