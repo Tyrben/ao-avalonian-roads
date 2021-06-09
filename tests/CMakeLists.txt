@@ -6,10 +6,18 @@ add_executable(ao-avalonian-roads-tests)
 
 target_compile_features(ao-avalonian-roads-tests PRIVATE cxx_std_17)
 
-
 # Any new _test.h file will be added to the batch test
 file(GLOB_RECURSE all_test_files
 	**/*_test.h)
+
+# Generate the main file
+configure_file(${CMAKE_SOURCE_DIR}/tests/main.cpp.in ${CMAKE_SOURCE_DIR}/tests/main.cpp COPYONLY)
+
+foreach(test_file IN ITEMS ${all_test_files})
+	file(RELATIVE_PATH relative_test_file ${CMAKE_SOURCE_DIR}/tests ${test_file})
+	file(APPEND ${CMAKE_SOURCE_DIR}/tests/main.cpp "#include \"${relative_test_file}\"\n")
+endforeach()
+
 
 target_sources(ao-avalonian-roads-tests
 	PRIVATE ${all_test_files}
