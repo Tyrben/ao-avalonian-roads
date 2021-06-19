@@ -36,7 +36,7 @@ RELATIVE_CONFIG_FILE_SUBTREE;
 	return true;
 }
 
-std::string Persistence::getUserDataDirectory()
+std::string LocalData::getUserDataDirectory()
 {
 	#if defined (_WIN32)
 	const char *environment = std::getenv("APPDATA");
