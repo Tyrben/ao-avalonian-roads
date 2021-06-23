@@ -8,7 +8,7 @@ target_compile_features(ao-avalonian-roads-tests PRIVATE cxx_std_17)
 
 # Any new _test.h file will be added to the batch test
 file(GLOB_RECURSE all_test_files
-	**/*_test.h)
+	*_test.h)
 
 # Generate the main file
 configure_file(${CMAKE_SOURCE_DIR}/tests/main.cpp.in ${CMAKE_SOURCE_DIR}/tests/main.cpp COPYONLY)
