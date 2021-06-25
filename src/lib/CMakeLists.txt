@@ -55,3 +55,6 @@ endif()
 target_include_directories(ao-avalonian-roads-lib
 	PRIVATE ../../vendor/libgraph
 	INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_link_libraries(ao-avalonian-roads-lib
+	PUBLIC libgraph)

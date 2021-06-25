@@ -57,8 +57,7 @@ elseif(CMAKE_HOST_UNIX)
 endif()
 
 target_link_libraries(ao-avalonian-roads-tests
-	LINK_PUBLIC ao-avalonian-roads-lib
-	LINK_PUBLIC libgraph)
+	PRIVATE ao-avalonian-roads-lib)
 
 # Keep compatibility with Debian 10 Buster (gcc 8.3)
 if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS_EQUAL 8.3)

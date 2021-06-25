@@ -10,6 +10,5 @@ target_sources(ao-avalonian-roads-gps
 	PRIVATE main.cpp)
 
 target_link_libraries(ao-avalonian-roads-gps
-	LINK_PUBLIC ao-avalonian-roads-lib
-	LINK_PUBLIC libgraph
-	LINK_PUBLIC bfg::Lyra)
+	PRIVATE ao-avalonian-roads-lib
+	PRIVATE bfg::Lyra)
