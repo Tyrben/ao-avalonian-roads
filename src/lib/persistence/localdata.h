@@ -5,6 +5,7 @@
 
 struct LocalData
 {
+	static const std::filesystem::path RELATIVE_APP_DIR_SUBTREE;
 	static const std::filesystem::path RELATIVE_CONFIG_FILE_SUBTREE;
 
 	static bool openStreamOnConfig(std::ifstream& stream_);

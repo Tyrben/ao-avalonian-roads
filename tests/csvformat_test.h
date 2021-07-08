@@ -1,5 +1,4 @@
 #pragma once
-
 #include <csv/csvformat.h>
 
 #include <filesystem>
@@ -8,8 +7,9 @@
 
 std::string prepareCsvTestFile()
 {
-	std::filesystem::path ph = std::filesystem::temp_directory_path() / std::filesystem::path("test.csv"); //("/tmp/test.csv"); //
+	std::filesystem::path ph = std::filesystem::temp_directory_path();
 	std::filesystem::create_directories(ph);
+	ph /= std::filesystem::path("test.ini");
 
 	std::ofstream outputFile(ph.string());
 

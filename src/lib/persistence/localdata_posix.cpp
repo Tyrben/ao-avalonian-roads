@@ -2,8 +2,24 @@
 
 #include <cstdlib> //getenv
 
-//SEE https://stackoverflow.com/questions/1024114/location-of-ini-config-files-in-linux-unix
-//and https://ploum.net/207-modify-your-application-to-use-xdg-folders/
+/*
+Linux best practices
+
+Read https://stackoverflow.com/questions/1024114/location-of-ini-config-files-in-linux-unix
+and https://ploum.net/207-modify-your-application-to-use-xdg-folders/
+and https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+
+User preferences != User data
+
+XDG_DATA_HOME personnal files
+
+XDG_CONFIG_HOME software configurations
+
+HOME/.mysoftware historical practice, deprecated
+
+There is a xdg lib
+
+*/
 
 std::filesystem::path getPathToXDGData()
 {
@@ -16,7 +32,7 @@ std::filesystem::path getPathToXDGData()
 	else
 	{
 		// XDG_DATA_HOME is not set
-		return std::filesystem::path();
+		return std::filesystem::path(); // $HOME/.something   ??
 	}
 }
 
@@ -24,7 +40,7 @@ std::filesystem::path getPathToXDGData()
 bool LocalData::openStreamOnConfig(std::ifstream& stream_)
 {
 	const std::filesystem::path configFilePath = getPathToXDGData() /
-RELATIVE_CONFIG_FILE_SUBTREE;
+		RELATIVE_CONFIG_FILE_SUBTREE;
 	stream_.open(configFilePath);
 
 	if (!stream_.is_open())

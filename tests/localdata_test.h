@@ -1,5 +1,8 @@
 #pragma once
 
+#include <persistence/localdata.h>
+#include <fstream>
+
 #ifdef _WIN32
 #	include "localdata_win32_test.h"
 #elif defined(__linux__)
@@ -7,3 +10,10 @@
 #else
 #	error "OS not supported"
 #endif
+
+TEST_CASE("LocalData can open a stream to the config file", "[LocalData]") {
+	std::ifstream inputConfig;
+	LocalData::openStreamOnConfig(inputConfig);
+	REQUIRE(inputConfig.is_open());
+	REQUIRE(inputConfig.good());
+}

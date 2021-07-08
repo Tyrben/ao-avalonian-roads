@@ -4,6 +4,25 @@
 #include <shlobj.h> //SHGetKnownFolderPath
 #include <combaseapi.h> //CoTaskMemFree
 
+
+/*
+Windows best practices
+
+Roaming = %appdata% 
+is for this user on all the machines of the domain
+
+Local = %localappdata% 
+is for this user on this computer (specific or too large)
+
+LocalLow = %appdata%/../LocalLow
+is a write protected mode of local
+
+Roaming is under C:\Users\myUser\AppData\Roaming\MyApp
+Local is under C:\Users\myUser\AppData\Local\MyApp
+LocalLow is under C:\Users\myUser\AppData\Local\MyApp
+*/
+
+//local
 std::filesystem::path getPathToRoamingAppData()
 {
 	PWSTR pathPWSTR = NULL;
