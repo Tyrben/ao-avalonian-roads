@@ -44,16 +44,7 @@ std::filesystem::path getPathToRoamingAppData()
 //static
 bool LocalData::openStreamOnConfig(std::ifstream& stream_)
 {
-	const std::filesystem::path configFilePath = getPathToRoamingAppData() / RELATIVE_CONFIG_FILE_SUBTREE;
-	stream_.open(configFilePath);
-
-	if (!stream_.is_open())
-		return false;
-
-	if (!stream_.good())
-		return false;
-
-	return true;
+	return openStreamOnConfig_(stream_, getPathToRoamingAppData());
 }
 
 //static

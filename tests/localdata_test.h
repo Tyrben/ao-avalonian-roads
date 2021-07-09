@@ -13,7 +13,15 @@
 
 TEST_CASE("LocalData can open a stream to the config file", "[LocalData]") {
 	std::ifstream inputConfig;
-	LocalData::openStreamOnConfig(inputConfig);
+	LocalData::openStreamOnConfig_(inputConfig, std::filesystem::path("/tmp") );
 	REQUIRE(inputConfig.is_open());
 	REQUIRE(inputConfig.good());
 }
+
+/*
+TEST_CASE("LocalData can open a stream to the config file", "[LocalData]") {
+	std::ifstream inputConfig;
+	LocalData::openStreamOnConfig(inputConfig);
+	REQUIRE(inputConfig.is_open());
+	REQUIRE(inputConfig.good());
+}*/

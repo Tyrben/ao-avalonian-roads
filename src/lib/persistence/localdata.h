@@ -14,4 +14,7 @@ struct LocalData
 	static bool openStreamOnStaticPortals(std::ifstream& stream_);
 	static bool openStreamOnDynamicMaps(std::ifstream& stream_);
 	static bool openStreamOnDynamicPortals(std::ifstream& stream_);
+
+//testable
+	static bool openStreamOnConfig_(std::ifstream& stream_, std::filesystem::path absolutePath_);
 };
